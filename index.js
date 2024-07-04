@@ -182,6 +182,7 @@ console.log('');
 process.stdout.write(`Opción: `); // Mostrar la casilla "Opción:"
 readline.cursorTo(process.stdout, 0, 7); // Mover el cursor a la posición 0, 7
 process.stdout.write(`[0m`); // Resetear color
+rl.prompt(); // Mostrar la casilla "Opción:"
 };
 
 const rl = readline.createInterface({
@@ -189,7 +190,7 @@ input: process.stdin,
 output: process.stdout
 });
 
-showMenu();
+showMenu(); // Mostrar el menú principal al inicio
 
 rl.question(' ', (option) => {
 switch (option) {
@@ -208,6 +209,7 @@ console.log('Prefix invalido');
 showMenu();
 } else {
 prefixInput = prefix;
+showMenu(); // Volver a mostrar el menú principal
 }
 });
 }
@@ -215,9 +217,11 @@ prefixInput = prefix;
 break;
 case '2':
 updateCode();
+showMenu(); // Volver a mostrar el menú principal
 break;
 case '3':
 installDependencies();
+showMenu(); // Volver a mostrar el menú principal
 break;
 case '4':
 console.log(' Saliendo...');
