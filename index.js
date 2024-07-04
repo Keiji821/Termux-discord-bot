@@ -138,7 +138,6 @@ console.log(`${colors.fg.red}${decorations.bold}El bot ${client.user.tag} se ha 
 
 const childProcess = require('child_process');
 const colorModule = require('colors');
-const readline = require('readline');
 
 const client = {
 on: {
