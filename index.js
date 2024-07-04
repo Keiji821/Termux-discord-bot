@@ -182,4 +182,3 @@ rl.question('Option: ', (option) => {
       }
     });
   }
-});
