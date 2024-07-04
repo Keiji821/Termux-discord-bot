@@ -145,7 +145,7 @@ console.log(`${colors.fg.blue}${decorations.bold}Bienvenido a Termux Bot!${color
 console.log(`${colors.fg.cyan}${decorations.italic}Por favor, selecciona una opción: ${colors.reset}`);
 
 console.log(`${colors.fg.green}${decorations.bold}1. Iniciar bot${colors.reset}`);
-console.log(`${colors.fg.red}${decorations.bold}2. Apagar bot${colors.reset}`);
+console.log(`${colors.fg.red}${decorations.bold}2. Cerrar menú${colors.reset}`);
 console.log(`${colors.fg.yellow}${decorations.bold}3. Actualizar código desde el repositorio de GitHub${colors.reset}`);
 
 rl.question('Opción: ', (option) => {
@@ -156,7 +156,7 @@ client.login(token);
 rl.close();
 });
 } else if (option === '2') {
-console.log(`${colors.fg.red}${decorations.bold}Bot detenido${colors.reset}`);
+console.log(`${colors.fg.red}${decorations.bold}Menú detenido!${colors.reset}`);
 process.exit();
 } else if (option === '3') {
 console.log(`${colors.fg.yellow}${decorations.bold}Actualización de código desde el repositorio de GitHub...${colors.reset}`);
