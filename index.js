@@ -1,47 +1,48 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: 131071 });
-let prefix = ''; // Prefijo para los comandos
+let prefixInput = ''; // Declarar variable para el prefijo
 const fs = require('fs');
 const readline = require('readline');
 const git = require('simple-git')();
 
 // Configuración de colores y decoraciones para la consola
 const colors = {
-reset: '[0m',
-bright: '[1m',
-dim: '[2m',
-underscore: '[4m',
-blink: '[5m',
-reverse: '[7m',
-hidden: '[8m',
-fg: {
-black: '[30m',
-red: '[31m',
-green: '[32m',
-yellow: '[33m',
-blue: '[34m',
-magenta: '[35m',
-cyan: '[36m',
-white: '[37m',
-},
-bg: {
-black: '[40m',
-red: '[41m',
-green: '[42m',
-yellow: '[43m',
-blue: '[44m',
-magenta: '[45m',
-cyan: '[46m',
-white: '[47m',
-},
+  reset: '[0m',
+  bright: '[1m',
+  dim: '[2m',
+  underscore: '[4m',
+  blink: '[5m',
+  reverse: '[7m',
+  hidden: '[8m',
+  fg: {
+    black: '[30m',
+    red: '[31m',
+    green: '[32m',
+    yellow: '[33m',
+    blue: '[34m',
+    magenta: '[35m',
+    cyan: '[36m',
+    white: '[37m',
+  },
+  bg: {
+    black: '[40m',
+    red: '[41m',
+    green: '[42m',
+    yellow: '[43m',
+    blue: '[44m',
+    magenta: '[45m',
+    cyan: '[46m',
+    white: '[47m',
+  },
 };
 
 // Decoraciones adicionales
 const decorations = {
-underline: '[4m',
-bold: '[1m',
-italic: '[3m',
+  underline: '[4m',
+  bold: '[1m',
+  italic: '[3m',
 };
+
 
 // Función para mostrar mensaje de inicio
 const startupMessage = () => {
@@ -98,11 +99,11 @@ commandFile = rootPath;
 }
 }
 
-console.log(`${colors.fg.green}${decorations.bold}Comando encontrado: ${commandFile}${colors.reset}`);
 if (!commandFile) {
 console.log(`${colors.fg.red}${decorations.bold}Comando no encontrado: ${commandName}${colors.reset}`);
 return;
 }
+
 const command = require(commandFile);
 if (!command.execute) {
 console.log(`${colors.fg.yellow}${decorations.bold}El comando ${commandName} no tiene una función execute${colors.reset}`);
@@ -123,8 +124,7 @@ setActivity('Bot oficial');
 
 client.on('messageCreate', async (message) => {
 if (message.author.bot) return;
-if (!message.content.startsWith(prefix)) return;
-commandHandler(message);
+commandHandler(message, prefixInput);
 });
 
 client.on('disconnect', () => {
@@ -136,56 +136,60 @@ console.error(`${colors.fg.red}${decorations.bold}Error: ${error}${colors.reset}
 });
 
 
+// Función para actualizar código desde GitHub
+const updateCode = async () => {
+try {
+await git.pull('origin', 'main');
+console.log(`${colors.fg.green}${decorations.bold}Código actualizado correctamente!${colors.reset}`);
+process.exit(); // Reiniciar el proceso para que se cargue el nuevo código
+} catch (error) {
+console.error(`${colors.fg.red}${decorations.bold}Error al actualizar código: ${error}${colors.reset}`);
+}
+};
+
+// Función para mostrar el menú principal
+const showMenu = () => {
+console.clear(); // Limpiar la consola
+console.log(`${colors.fg.cyan}${decorations.bold}  _______ ${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold} /      \ ${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}|  Termux  | ${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}|  Discord  | ${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}|  Bot        | ${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold} \      / ${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}  _______ ${colors.reset}`);
+console.log(`${colors.fg.white}${decorations.bold} Seleccione una opción: ${colors.reset}`);
+console.log(`${colors.fg.white}1. Inicializar bot${colors.reset}`);
+console.log(`${colors.fg.white}2. Actualizar código${colors.reset}`);
+console.log(`${colors.fg.white}3. Salir${colors.reset}`);
+};
+
+// Leer entrada del usuario
 const rl = readline.createInterface({
 input: process.stdin,
-output: process.stdout,
+output: process.stdout
 });
 
-console.log(`${colors.fg.blue}${decorations.bold}Bienvenido a Termux Bot!${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.italic}Por favor, selecciona una opción: ${colors.reset}`);
+// Mostrar menú principal
+showMenu();
 
-console.log(`${colors.fg.green}${decorations.bold}1. Iniciar bot${colors.reset}`);
-console.log(`${colors.fg.red}${decorations.bold}2. Cerrar menú${colors.reset}`);
-console.log(`${colors.fg.yellow}${decorations.bold}3. Actualizar código desde el repositorio de GitHub${colors.reset}`);
-
+// Leer opción del usuario
 rl.question('Opción: ', (option) => {
-if (option === '1') {
-console.log(`${colors.fg.green}${decorations.bold}Ingresa el token de tu bot para iniciarlo: ${colors.reset}`);
+switch (option) {
+case '1':
+console.log('Ingrese el token del bot: ');
 rl.question('Token: ', (token) => {
-let prefixInput = ''; // Declarar variable para el prefijo
-console.log(`${colors.fg.green}${decorations.bold}Ingresa el prefijo que va a utilizar el bot: ${colors.reset}`);
-rl.question('Prefijo: ', (prefix) => {
-prefixInput = prefix; // Asignar el valor del prefijo
 client.login(token);
-console.log(`${colors.fg.green}${decorations.bold}Bot iniciado correctamente!${colors.reset}`);
-rl.close();
 });
-});
-} else if (option === '2') {
-console.log(`${colors.fg.red}${decorations.bold}Menú detenido!${colors.reset}`);
+break;
+case '2':
+updateCode();
+break;
+case '3':
+console.log(`${colors.fg.red}${decorations.bold}Saliendo...${colors.reset}`);
 process.exit();
-} else if (option === '3') {
-console.log(`${colors.fg.yellow}${decorations.bold}Actualización de código desde el repositorio de GitHub...${colors.reset}`);
-git.pull('origin', 'main', (err, update) => {
-if (err) {
-console.error(err);
-} else {
-console.log(`${colors.fg.green}${decorations.bold}Actualización exitosa!${colors.reset}`);
-}
-}).then(() => {
-console.log(`${colors.fg.green}${decorations.bold}Actualización completada!${colors.reset}`);
-// Vuelve a ejecutar el menú principal después de actualizar el código
-console.log(`${colors.fg.blue}${decorations.bold} Bienvenido a Termux Bot!${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.italic}Por favor, selecciona una opción: ${colors/reset}`);
-console.log(`${colors.fg.green}${decorations.bold}1. Iniciar bot${colors.reset}`);
-console.log(`${colors.fg.red}${decorations.bold}2. Cerrar menú${colors.reset}`);
-console.log(`${colors.fg.yellow}${decorations.bold}3. Actualizar código desde el repositorio de GitHub${colors.reset}`);
-rl.question('Opción: ', (option) => {
-//...
-});
-}).catch((err) => {
-console.error(err);
-rl.close();
-});
+break;
+default:
+console.log(`${colors.fg.red}${decorations.bold}Opción inválida${colors.reset}`);
+showMenu();
 }
 });
