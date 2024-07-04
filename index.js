@@ -45,19 +45,23 @@ italic: '[3m',
 
 // Animaciones
 const animation = {
-loading: `\,x1b[34m■[0m`,
+loading: `[34m■[0m`,
 success: `[32m✔[0m`,
 error: `[31m✖[0m`,
 };
 
 // Menú principal
 console.log(``);
-console.log(`${colors.fg.cyan}${decorations.bold}  _______  ${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.bold} /       \ ${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.bold}/         \${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.bold}|   Termux Bot   |${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.bold}\         /${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.bold} \       / ${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}████████████████████████████████████████████████████████████████████████${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}█                                                                                      █${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}█  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  █${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}█  █       █       █       █       █       █       █       █       █  █${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}█  █       █       █       █       █       █       █       █       █  █${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}█  █  1️⃣  █  Iniciar       █  2️⃣  █  Configurar  █  3️⃣  █  Actualizar   █  4️⃣  █  Cerrar       █${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}█  █       █       █       █       █       █       █       █       █  █${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}█  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  █${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}█                                                                                      █${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}████████████████████████████████████████████████████████████████████████${colors.reset}`);
 console.log(``);
 
 // Pedir token del bot al iniciar el archivo index.js
@@ -65,9 +69,6 @@ const rl = readline.createInterface({
 input: process.stdin,
 output: process.stdout,
 });
-
-console.log(`${colors.fg.blue}${decorations.bold}Bienvenido a Termux Bot!${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.italic}Por favor, selecciona una opción:${colors.reset}`);
 
 rl.setPrompt(`${colors.fg.green}${decorations.bold}> ${colors.reset}`);
 
@@ -101,7 +102,7 @@ console.error(err);
 rl.close();
 });
 } else if (option === '4') {
-console.log(`${colors.fg.red}${decorations.bold} ${animation.error} Cerrar${colors.reset}`);
+console.log(`${colors.fg.red}${decorations.bold} Cerrar${colors.reset}`);
 process.exit();
 }
 });
