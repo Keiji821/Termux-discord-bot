@@ -136,40 +136,47 @@ console.log(`${colors.fg.red}${decorations.bold}El bot ${client.user.tag} se ha 
 });
 
 
+
 const childProcess = require('child_process');
+const readline = require('readline');
+const colors = require('colors');
+const chalk = require('chalk');
+
+process.stdout.write(chalk.hex('#23272E')); // Fondo de color de Discord
 
 const updateCode = async () => {
 try {
-console.log(`${colors.fg.green} Actualizando código...${colors.reset}`);
-await childProcess.exec('git pull origin main && node index.js');
-console.log(`${colors.fg.green} Código actualizado correctamente!${colors.reset}`);
+console.log(`${chalk.bgGreen.black} Actualizando código...${chalk.reset}`);
+await childProcess.exec('git pull origin main');
+console.log(`${chalk.bgGreen.black} Código actualizado correctamente!${chalk.reset}`);
+await childProcess.exec('node index.js'); // Ejecutar el archivo index.js nuevamente
 } catch (error) {
-console.error(`Error al actualizar código: ${error}`);
+console.error(`${chalk.bgRed.black} Error al actualizar código: ${error}${chalk.reset}`);
 }
 };
 
 const installDependencies = async () => {
 try {
-console.log(`${colors.fg.green} Instalando dependencias...${colors.reset}`);
+console.log(`${chalk.bgGreen.black} Instalando dependencias...${chalk.reset}`);
 await childProcess.exec('npm install');
-console.log(`${colors.fg.green} Dependencias instaladas correctamente!${colors.reset}`);
+console.log(`${chalk.bgGreen.black} Dependencias instaladas correctamente!${chalk.reset}`);
 } catch (error) {
-console.error(`Error al instalar dependencias: ${error}`);
+console.error(`${chalk.bgRed.black} Error al instalar dependencias: ${error}${chalk.reset}`);
 }
 };
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-console.log(`%cTermux Discord Bot`, `background-color: #333; color: #fff`);
-console.log(`%c------------`, `background-color: #333; color: #fff`);
-console.log(`%c• Hecho por: Keiji821`, `background-color: #333; color: #fff`);
+console.log(`${chalk.bgBlue.black} Termux Discord Bot ${chalk.reset}`);
+console.log(`${chalk.bgBlue.black}------------ ${chalk.reset}`);
+console.log(`${chalk.bgBlue.black}• Hecho por: Keiji821 ${chalk.reset}`);
 console.log(``);
-console.log(`%cOPCIÓN`, `background-color: #333; color: #fff`);
-console.log(`%c----------`, `background-color: #333; color: #fff`);
-console.log(`[1] Iniciar bot`);
-console.log(`[2] Actualizar`);
-console.log(`[3] Instalar dependencias`);
-console.log(`[4] Salir`);
+console.log(`${chalk.bgBlue.black}OPCIÓN ${chalk.reset}`);
+console.log(`${chalk.bgBlue.black}---------- ${chalk.reset}`);
+console.log(`${chalk.bgWhite.black}[1] Iniciar bot${chalk.reset}`);
+console.log(`${chalk.bgWhite.black}[2] Actualizar${chalk.reset}`);
+console.log(`${chalk.bgWhite.black}[3] Instalar dependencias${chalk.reset}`);
+console.log(`${chalk.bgWhite.black}[4] Salir${chalk.reset}`);
 console.log(``);
 };
 
@@ -193,11 +200,9 @@ prefixInput = prefix;
 });
 break;
 case '2':
-console.log('%cActualizando código...', `background-color: #333; color: #fff`);
 updateCode();
 break;
 case '3':
-console.log('%cInstalando dependencias...', `background-color: #333; color: #fff`);
 installDependencies();
 break;
 case '4':
@@ -210,4 +215,3 @@ console.clear(); // Limpiar la consola
 showMenu(); // Volver a mostrar el menú principal
 }
 });
-
