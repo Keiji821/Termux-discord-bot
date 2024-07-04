@@ -153,6 +153,7 @@ await exec('git pull origin main');
 console.log(`[32mCódigo actualizado correctamente![0m`);
 await exec('node index.js'); // Ejecutar el archivo index.js nuevamente
 console.clear(); // Limpiar la consola
+process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú en el color del Discord Nitro Boost
 showMenu(); // Volver a mostrar el menú principal
 } catch (error) {
 console.error(`[31mError al actualizar código: ${error}[0m`);
@@ -165,6 +166,7 @@ console.log(`[32mInstalando dependencias...[0m`);
 await exec('npm install');
 console.log(`[32mDependencias instaladas correctamente![0m`);
 console.clear(); // Limpiar la consola
+process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú en el color del Discord Nitro Boost
 showMenu(); // Volver a mostrar el menú principal
 } catch (error) {
 console.error(`[31mError al instalar dependencias: ${error}[0m`);
@@ -184,6 +186,7 @@ console.log(`[37m[3] Instalar dependencias[0m`);
 console.log(`[31m[4] Salir[0m`);
 console.log('');
 console.log('');
+console.log('Opción: '); // Mostrar el texto de la casilla "Opción:"
 process.stdout.write(`Opción: `); // Mostrar la casilla "Opción:"
 readline.cursorTo(process.stdout, 0, 7); // Mover el cursor a la posición 0, 7
 process.stdout.write(`[0m`); // Resetear color
@@ -194,43 +197,7 @@ showMenu(); // Mostrar el menú principal al inicio
 
 rl.on('line', (option) => {
 switch (option.trim()) {
-case '1':
-console.log('Ingrese el token del bot: ');
-rl.question('Token: ', (token) => {
-if (token === '') {
-console.log('Token invalido');
-showMenu();
-} else {
-client.login(token);
-console.log('Ingrese el prefijo del bot: ');
-rl.question('Prefijo: ', (prefix) => {
-if (prefix === '') {
-console.log('Prefix invalido');
-showMenu();
-} else {
-prefixInput = prefix;
-showMenu(); // Volver a mostrar el menú principal
-}
-});
-}
-});
-break;
-case '2':
-updateCode();
-showMenu(); // Volver a mostrar el menú principal
-break;
-case '3':
-installDependencies();
-showMenu(); // Volver a mostrar el menú principal
-break;
-case '4':
-console.log(' Saliendo...');
-process.exit();
-break;
-default:
-console.log(' Opción inválida');
-console.clear(); // Limpiar la consola
-showMenu(); // Volver a mostrar el menú principal
+//...
 }
 }).on('close', () => {
 process.exit();
