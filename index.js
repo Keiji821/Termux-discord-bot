@@ -150,7 +150,7 @@ console.log(`${colors.fg.yellow}${decorations.bold}3. Actualizar código desde e
 
 rl.question('Opción: ', (option) => {
 if (option === '1') {
-console.log(`${colors.fg.green}${decorations.bold}Ingresa el token de tu bot para initiarlo: ${colors.reset}`);
+console.log(`${colors.fg.green}${decorations.bold}Ingresa el token de tu bot para iniciarlo: ${colors.reset}`);
 rl.question('Token: ', (token) => {
 client.login(token);
 rl.close();
@@ -167,7 +167,7 @@ console.error(err);
 console.log(`${colors.fg.green}${decorations.bold}Actualización exitosa!${colors.reset}`);
 }
 }).then(() => {
-console.log(`${colors.fg.green}${decorations.bold}Actualización completa!${colors.reset}`);
+console.log(`${colors.fg.green}${decorations.bold}Actualización completada!${colors.reset}`);
 rl.close();
 }).catch((err) => {
 console.error(err);
