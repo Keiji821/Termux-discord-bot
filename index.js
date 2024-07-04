@@ -137,33 +137,26 @@ console.log(`${colors.fg.red}${decorations.bold}El bot ${client.user.tag} se ha 
 
 
 const childProcess = require('child_process');
-const colorModule = require('colors');
-
-const discordClient = {
-on: {
-error: (error) => {
-console.error(`${colorModule.fg.red}${colorModule.bold}Error: ${error}${colorModule.reset}`);
-}
-}
-};
+const readline = require('readline');
+const colors = require('colors');
 
 const updateCode = async () => {
 try {
-console.log(`${colorModule.fg.green} Actualizando código...${colorModule.reset}`);
+console.log(`${colors.fg.green} Actualizando código...${colors.reset}`);
 await childProcess.exec('git pull origin main && node index.js');
-console.log(`${colorModule.fg.green} Código actualizado correctamente!${colorModule.reset}`);
+console.log(`${colors.fg.green} Código actualizado correctamente!${colors.reset}`);
 } catch (error) {
-console.error(`${colorModule.fg.red} Error al actualizar código: ${error}${colorModule.reset}`);
+console.error(`Error al actualizar código: ${error}`);
 }
 };
 
 const installDependencies = async () => {
 try {
-console.log(`${colorModule.fg.green} Instalando dependencias...${colorModule.reset}`);
+console.log(`${colors.fg.green} Instalando dependencias...${colors.reset}`);
 await childProcess.exec('npm install');
-console.log(`${colorModule.fg.green} Dependencias instaladas correctamente!${colorModule.reset}`);
+console.log(`${colors.fg.green} Dependencias instaladas correctamente!${colors.reset}`);
 } catch (error) {
-console.error(`${colorModule.fg.red} Error al instalar dependencias: ${error}${colorModule.reset}`);
+console.error(`Error al instalar dependencias: ${error}`);
 }
 };
 
@@ -196,7 +189,6 @@ console.log('Ingrese el token del bot: ');
 rl.question('Token: ', (token) => {
 client.login(token);
 console.log('Ingrese el prefijo del bot: ');
-
 rl.question('Prefijo: ', (prefix) => {
 prefixInput = prefix;
 });
