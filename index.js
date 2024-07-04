@@ -166,7 +166,7 @@ console.error(err);
 console.log(`${colors.fg.green}${decorations.bold}Actualización exitosa!${colors.reset}`);
 }
 }).then(() => {
-console.log(`${colors.fg.green}${decorations.bold}Actualización completa!${colors.reset}`);
+console.log(`${colors.fg.green}${decorations.bold}Actualización completada!${colors.reset}`);
 rl.close();
 }).catch((err) => {
 console.error(err);
