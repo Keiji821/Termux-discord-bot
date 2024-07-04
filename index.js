@@ -224,6 +224,7 @@ const installSpinner = spinner('Instalando dependencias...');
 childProcess.exec('npm install', (error, stdout, stderr) => {
 if (error) {
 console.error(`Error al instalar dependencias: ${error.message}`);
+
 installSpinner.fail();
 return;
 }
@@ -264,4 +265,3 @@ clearInterval(timer);
 }
 };
 }
-
