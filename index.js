@@ -201,31 +201,3 @@ showMenu();
 
 
 // Servidor HTTP
-const path = require('path');
-const { spawn } = require('child_process');
-
-console.log(`${colors.fg.cyan}Ruta actual: ${process.cwd()}${colors.reset}`);
-
-const paginaDir = path.join(__dirname, './página');
-if (!fs.existsSync(paginaDir)) {
-console.error(`${colors.fg.red}La carpeta ${paginaDir} no existe${colors.reset}`);
-process.exit(1);
-}
-
-const servidorPath = path.join(__dirname, './página/servidor.js');
-if (!fs.existsSync(servidorPath)) {
-console.error(`${colors.fg.red}El archivo ${servidorPath} no existe${colors.reset}`);
-process.exit(1);
-}
-
-try {
-console.log(`${colors.fg.cyan}Ruta absoluta: ${servidorPath}${colors.reset}`);
-const httpServer = spawn('node', [ servidorPath ], {
-stdio: 'inherit',
-});
-httpServer.on('exit', (code) => {
-console.log(`${colors.fg.red}Servidor HTTP cerrado con código ${code}${colors.reset}`);
-});
-} catch (err) {
-console.error(`${colors.fg.red}Error al ejecutar servidor HTTP: ${err}${colors.reset}`);
-}
