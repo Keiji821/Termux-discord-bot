@@ -181,6 +181,7 @@ console.log('');
 console.log('');
 process.stdout.write(`Opción: `); // Mostrar la casilla "Opción:"
 readline.cursorTo(process.stdout, 0, 7); // Mover el cursor a la posición 0, 7
+process.stdout.write(`[0m`); // Resetear color
 };
 
 const rl = readline.createInterface({
