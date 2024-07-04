@@ -147,7 +147,13 @@ console.error(`${colors.fg.red}${decorations.bold}Error al actualizar código: $
 }
 };
 
-// Función para mostrar el menú principal
+// Leer entrada del usuario
+const rl = readline.createInterface({
+input: process.stdin,
+output: process.stdout
+});
+
+// Mostrar menú principal
 const showMenu = () => {
 console.clear(); // Limpiar la consola
 console.log(`${colors.fg.cyan}${decorations.bold}  _______ ${colors.reset}`);
@@ -163,12 +169,6 @@ console.log(`${colors.fg.white}2. Actualizar código${colors.reset}`);
 console.log(`${colors.fg.white}3. Salir${colors.reset}`);
 };
 
-// Leer entrada del usuario
-const rl = readline.createInterface({
-input: process.stdin,
-output: process.stdout
-});
-
 // Mostrar menú principal
 showMenu();
 
@@ -179,6 +179,10 @@ case '1':
 console.log('Ingrese el token del bot: ');
 rl.question('Token: ', (token) => {
 client.login(token);
+console.log('Ingrese el prefijo del bot: ');
+rl.question('Prefijo: ', (prefix) => {
+prefixInput = prefix;
+});
 });
 break;
 case '2':
