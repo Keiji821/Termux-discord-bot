@@ -108,13 +108,12 @@ if (!command.execute) {
 console.log(`${colors.fg.yellow}${decorations.bold}El comando ${commandName} no tiene una función execute${colors.reset}`);
 return;
 }
-await command.execute(message, args, client, prefix);
+await command.execute(message, args, client, message.content.startsWith(prefix)? prefix : '');
 } catch (error) {
 console.error(`${colors.fg.red}${decorations.bold}Error al ejecutar comando: ${error}${colors.reset}`);
 message.reply(`Error al ejecutar comando: ${error}`);
 }
 };
-
 
 client.on('ready', async () => {
 startupMessage();
