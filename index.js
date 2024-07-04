@@ -137,16 +137,16 @@ console.log(`${colors.fg.red}${decorations.bold}El bot ${client.user.tag} se ha 
 
 
 
-const childProcess = require('childProcess');
+const readline = require('readline');
 
 process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú en el color del Discord Nitro Boost
 
 const updateCode = async () => {
 try {
 console.log(`[32mActualizando código...[0m`);
-await childProcess.exec('git pull origin main');
+await exec('git pull origin main');
 console.log(`[32mCódigo actualizado correctamente![0m`);
-await childProcess.exec('node index.js'); // Ejecutar el archivo index.js nuevamente
+await exec('node index.js'); // Ejecutar el archivo index.js nuevamente
 console.clear(); // Limpiar la consola
 showMenu(); // Volver a mostrar el menú principal
 } catch (error) {
@@ -157,7 +157,7 @@ console.error(`[31mError al actualizar código: ${error}[0m`);
 const installDependencies = async () => {
 try {
 console.log(`[32mInstalando dependencias...[0m`);
-await childProcess.exec('npm install');
+await exec('npm install');
 console.log(`[32mDependencias instaladas correctamente![0m`);
 console.clear(); // Limpiar la consola
 showMenu(); // Volver a mostrar el menú principal
