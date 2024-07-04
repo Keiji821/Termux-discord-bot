@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: 131071 });
-const prefix = ','; // Prefix para los comandos
+const prefix = ','; // Prefijo para los comandos
 const fs = require('fs');
 const readline = require('readline');
 const git = require('simple-git')();
@@ -98,7 +98,6 @@ commandFile = rootPath;
 }
 
 console.log(`${colors.fg.green}${decorations.bold}Comando encontrado: ${commandFile}${colors.reset}`);
-
 if (!commandFile) {
 console.log(`${colors.fg.red}${decorations.bold}Comando no encontrado: ${commandName}${colors.reset}`);
 return;
@@ -143,49 +142,35 @@ output: process.stdout,
 });
 
 console.log(`${colors.fg.blue}${decorations.bold}Bienvenido a Termux Bot!${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.italic}Porfavor selecciona una opción: ${colors.reset}`);
-console.log(`${colors.fg.green}${decorations.bold}1. Iniciar bot ${colors.reset}`);
-
-console.log(`${colors.fg.red}${decorations.bold}2. Apagar bot ${colors.reset}`);
-console.log(`${colors.fg.yellow}${decorations.bold}3. Actualizar código desde el repositorio de GitHub ${colors.reset}`);
-
-rl.question('Option: ', (option) => {
-if (option === '1') {
-console.log(`${colors.fg.green}${decorations.bold}Ingresa el token de tu bot para iniciarlo: ${colors.reset}`);
-rl.question('Token: ', (token) => {
-client.login(token);
-rl.close();
-});
-} else if (option === '2') {
-console.log(`${colors.fg.red}${decorations.bold}Bot detenido ${colors.reset}`);
-process.exit();
-} else if (option === '3') {
-console.log(`${colors.fg.yellow}${decorations.bold}Actualización de código desde el repositorio de GitHub... ${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.italic}Por favor, selecciona una opción: ${colors.reset}`);
+console.log(`${colors.fg.green}${decorations.bold}1. Iniciar bot${colors.reset}`);
+console.log(`${colors.fg.red}${decorations.bold}2. Apagar bot${colors.reset}`);
+console.log(`${colors.fg.yellow}${decorations.bold}3. Actualizar código desde el repositorio de GitHub${colors.reset}`);
 
 rl.question('Opción: ', (option) => {
 if (option === '1') {
-console.log(`${colors.fg.green}${decorations.bold}Ingresar token para iniciar bot: ${colors.reset}`);
+console.log(`${colors.fg.green}${decorations.bold}Ingresa el token de tu bot para initiarlo: ${colors.reset}`);
 rl.question('Token: ', (token) => {
 client.login(token);
 rl.close();
 });
 } else if (option === '2') {
-console.log(`${colors.fg.red}${decorations.bold}Bot detenido ${colors.reset}`);
+console.log(`${colors.fg.red}${decorations.bold}Bot detenido${colors.reset}`);
 process.exit();
 } else if (option === '3') {
-console.log(`${colors.fg.yellow}${decorations.bold}Actualizando código desde el repositorio de GitHub... ${colors.reset}`);
+console.log(`${colors.fg.yellow}${decorations.bold}Actualización de código desde el repositorio de GitHub...${colors.reset}`);
 git.pull('origin', 'main', (err, update) => {
 if (err) {
 console.error(err);
 } else {
-console.log(`${colors.fg.green}${decorations.bold}Actualización exitosa! ${colors.reset}`);
+console.log(`${colors.fg.green}${decorations.bold}Actualización exitosa!${colors.reset}`);
 }
 }).then(() => {
-console.log(`${colors.fg.green}${decorations.bold}Actualización completa! ${colors.reset}`);
+console.log(`${colors.fg.green}${decorations.bold}Actualización completa!${colors.reset}`);
+rl.close();
 }).catch((err) => {
 console.error(err);
+rl.close();
 });
-rl.close(); // Add this line to close the rl.question method
 }
-rl.close(); // Add this line to close the rl.question method
 });
