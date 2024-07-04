@@ -142,22 +142,44 @@ input: process.stdin,
 output: process.stdout,
 });
 
-console.log(`${colors.fg.blue}${decorations.bold}Welcome to Termux Bot!${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.italic}Please select an option: ${colors.reset}`);
-console.log(`${colors.fg.green}${decorations.bold}1. Start bot ${colors.reset}`);
+console.log(`${colors.fg.blue}${decorations.bold}Bienvenido a Termux Bot!${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.italic}Porfavor selecciona una opción: ${colors.reset}`);
+console.log(`${colors.fg.green}${decorations.bold}1. Iniciar bot ${colors.reset}`);
 
-console.log(`${colors.fg.red}${decorations.bold}2. Stop bot ${colors.reset}`);
-console.log(`${colors.fg.yellow}${decorations.bold}3. Update code from GitHub repository ${colors.reset}`);
+console.log(`${colors.fg.red}${decorations.bold}2. Apagar bot ${colors.reset}`);
+console.log(`${colors.fg.yellow}${decorations.bold}3. Actualizar código desde el repositorio de GitHub ${colors.reset}`);
 
 rl.question('Option: ', (option) => {
 if (option === '1') {
-console.log(`${colors.fg.green}${decorations.bold}Enter token to start bot: ${colors.reset}`);
+console.log(`${colors.fg.green}${decorations.bold}Ingresa el token de tu bot para iniciarlo: ${colors.reset}`);
 rl.question('Token: ', (token) => {
 client.login(token);
 rl.close();
 });
 } else if (option === '2') {
-console.log(`${colors.fg.red}${decorations.bold}Bot stopped ${colors.reset}`);
+console.log(`${colors.fg.red}${decorations.bold}Bot detenido ${colors.reset}`);
 process.exit();
 } else if (option === '3') {
-console.log(`${colors.fg.yellow}${decorations.bold}Updating code from GitHub repository... ${colors.reset}`);
+console.log(`${colors.fg.yellow}${decorations.bold}Actualización de código desde el repositorio de GitHub... ${colors.reset}`);
+
+rl.question('Option: ', (option) => {
+  if (option === '1') {
+    console.log(`${colors.fg.green}${decorations.bold}Ingrese el token para iniciar el bot: ${colors.reset}`);
+    rl.question('Token: ', (token) => {
+      client.login(token);
+      rl.close();
+    });
+  } else if (option === '2') {
+    console.log(`${colors.fg.red}${decorations.bold}Bot detenido ${colors.reset}`);
+    process.exit();
+  } else if (option === '3') {
+    console.log(`${colors.fg.yellow}${decorations.bold}Actualización de código desde el repositorio de GitHub... ${colors.reset}`);
+    git.pull('origin', 'main', (err, update) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(`${colors.fg.green}${decorations.bold}Actualización exitosa! ${colors.reset}`);
+      }
+    });
+  }
+});
