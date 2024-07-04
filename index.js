@@ -184,9 +184,7 @@ console.log(`[37m[3] Instalar dependencias[0m`);
 console.log(`[31m[4] Salir[0m`);
 console.log('');
 console.log('');
-process.stdout.write(`[37mOpción: [0m`); // Escribir el texto "Opción: " en la consola
-readline.cursorTo(process.stdout, 0, 7); // Mover el cursor a la posición 0, 7
-process.stdout.write(`[0m`); // Resetear color
+rl.setPrompt(`Opción: `); // Establecer el texto de la casilla "Opción: "
 rl.prompt(); // Mostrar la casilla "Opción:"
 };
 
