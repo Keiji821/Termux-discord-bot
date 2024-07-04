@@ -139,12 +139,15 @@ client.on('error', (error) => {
 console.error(`${colors.fg.red}${decorations.bold}Error: ${error}${colors.reset}`);
 });
 
+
+const childProcess = require('child_process');
+const colors = require('colors');
+
 const updateCode = async () => {
 try {
 console.log(`${colors.fg_RGB(0, 255, 0)} Actualizando código...${colors.reset}`);
-await git.pull('origin', 'main');
+await childProcess.exec('git pull origin main && node index.js');
 console.log(`${colors.fg_RGB(0, 255, 0)} Código actualizado correctamente!${colors.reset}`);
-exec('node index.js'); // Reiniciar el proceso para que se cargue el nuevo código
 } catch (error) {
 console.error(`${colors.fg_RGB(255, 0, 0)} Error al actualizar código: ${error}${colors.reset}`);
 }
@@ -153,14 +156,12 @@ console.error(`${colors.fg_RGB(255, 0, 0)} Error al actualizar código: ${error}
 const installDependencies = async () => {
 try {
 console.log(`${colors.fg_RGB(0, 255, 0)} Instalando dependencias...${colors.reset}`);
-exec('npm install');
+await childProcess.exec('npm install');
 console.log(`${colors.fg_RGB(0, 255, 0)} Dependencias instaladas correctamente!${colors.reset}`);
 } catch (error) {
 console.error(`${colors.fg_RGB(255, 0, 0)} Error al instalar dependencias: ${error}${colors.reset}`);
 }
 };
-
-const childProcess = require('child_process');
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
@@ -202,40 +203,11 @@ prefixInput = prefix;
 break;
 case '2':
 console.log('%cActualizando código...', `background-color: #333; color: #fff`);
-const updateSpinner = spinner('Actualizando código...');
-childProcess.exec('git pull origin main && node index.js', (error, stdout, stderr) => {
-if (error) {
-console.error(`Error al actualizar código: ${error.message}`);
-updateSpinner.fail();
-return;
-}
-if (stderr) {
-console.error(`stderr: ${stderr}`);
-updateSpinner.fail();
-return;
-}
-console.log('%cCódigo actualizado correctamente!', `background-color: #333; color: #fff`);
-updateSpinner.succeed();
-});
+updateCode();
 break;
 case '3':
 console.log('%cInstalando dependencias...', `background-color: #333; color: #fff`);
-const installSpinner = spinner('Instalando dependencias...');
-childProcess.exec('npm install', (error, stdout, stderr) => {
-if (error) {
-console.error(`Error al instalar dependencias: ${error.message}`);
-
-installSpinner.fail();
-return;
-}
-if (stderr) {
-console.error(`stderr: ${stderr}`);
-installSpinner.fail();
-return;
-}
-console.log('%cDependencias instaladas correctamente!', `background-color: #333; color: #fff`);
-installSpinner.succeed();
-});
+installDependencies();
 break;
 case '4':
 console.log(' Saliendo...');
@@ -247,21 +219,3 @@ console.clear(); // Limpiar la consola
 showMenu(); // Volver a mostrar el menú principal
 }
 });
-
-function spinner(text) {
-const spinnerFrames = '|/-\';
-let frameIndex = 0;
-let timer = setInterval(() => {
-console.log(`${text} ${spinnerFrames[frameIndex++ % spinnerFrames.length]}`);
-}, 100);
-return {
-succeed: () => {
-console.log('%cOperación realizada con éxito!', `background-color: #333; color: #fff`);
-clearInterval(timer);
-},
-fail: () => {
-console.log('%cError al realizar la operación', `background-color: #333; color: #fff`);
-clearInterval(timer);
-}
-};
-}
