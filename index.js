@@ -176,7 +176,6 @@ console.log(`[2] Actualizar`);
 console.log(`[3] Instalar dependencias`);
 console.log(`[4] Salir`);
 console.log(``);
-console.log(`Opción > `);
 };
 
 // Leer entrada del usuario
