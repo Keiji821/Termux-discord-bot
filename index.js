@@ -139,12 +139,33 @@ console.error(`${colors.fg.red}${decorations.bold}Error: ${error}${colors.reset}
 // Función para actualizar código desde GitHub
 const updateCode = async () => {
 try {
+console.log(`${colors.fg.cyan}${decorations.bold}Actualizando código...${colors.reset}`);
+console.log(``);
+console.log(`${colors.fg.white})=> ${colors.reset} Git pull...`);
 await git.pull('origin', 'main');
-console.log(`${colors.fg.green}${decorations.bold}Código actualizado correctamente!${colors.reset}`);
+console.log(`${colors.fg.green}${decorations.bold}=> ${colors.reset} Código actualizado correctamente!`);
+console.log(``);
+console.log(`${colors.fg.magenta}${decorations.bold}Reiniciando bot...${colors.reset}`);
 process.exit(); // Reiniciar el proceso para que se cargue el nuevo código
 } catch (error) {
 console.error(`${colors.fg.red}${decorations.bold}Error al actualizar código: ${error}${colors.reset}`);
 }
+};
+
+// Función para mostrar el menú principal
+const showMenu = () => {
+console.clear(); // Limpiar la consola
+console.log(`${colors.fg.cyan}${decorations.bold}Termux Discord Bot${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.bold}[ Bot de Discord ]${colors.reset}`);
+console.log(`${colors.fg.white}::Repositorio de uso libre::${colors.reset}`);
+console.log(`${colors.fg.white}::Hecho por: Keiji821::${colors.reset}`);
+console.log(``);
+console.log(`${colors.fg.magenta}${decorations.bold}[ • • ] ELIJE UNA OPCIÓN [  • •  ]${colors.reset}`);
+console.log(`${colors.fg.white}[1] Iniciar bot${colors.reset}`);
+console.log(`${colors.fg.white}[2] Actualizar${colors.reset}`);
+console.log(`${colors.fg.white}[3] Salir${colors.reset}`);
+console.log(``);
+console.log(`Entrada >> `);
 };
 
 // Leer entrada del usuario
@@ -152,22 +173,6 @@ const rl = readline.createInterface({
 input: process.stdin,
 output: process.stdout
 });
-
-// Mostrar menú principal
-const showMenu = () => {
-console.clear(); // Limpiar la consola
-console.log(`${colors.fg.cyan}${decorations.bold}  _______ ${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.bold} /      \ ${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.bold}|  Termux  | ${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.bold}|  Discord  | ${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.bold}|  Bot        | ${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.bold} \      / ${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.bold}  _______ ${colors.reset}`);
-console.log(`${colors.fg.white}${decorations.bold} Seleccione una opción: ${colors.reset}`);
-console.log(`${colors.fg.white}1. Inicializar bot${colors.reset}`);
-console.log(`${colors.fg.white}2. Actualizar código${colors.reset}`);
-console.log(`${colors.fg.white}3. Salir${colors.reset}`);
-};
 
 // Mostrar menú principal
 showMenu();
@@ -198,6 +203,3 @@ showMenu();
 }
 });
 
-
-
-// Servidor HTTP
