@@ -7,40 +7,43 @@ const git = require('simple-git')();
 
 // Configuración de colores y decoraciones para la consola
 const colors = {
-  reset: '[0m',
-  bright: '[1m',
-  dim: '[2m',
-  underscore: '[4m',
-  blink: '[5m',
-  reverse: '[7m',
-  hidden: '[8m',
-  fg: {
-    black: '[30m',
-    red: '[31m',
-    green: '[32m',
-    yellow: '[33m',
-    blue: '[34m',
-    magenta: '[35m',
-    cyan: '[36m',
-    white: '[37m',
-  },
-  bg: {
-    black: '[40m',
-    red: '[41m',
-    green: '[42m',
-    yellow: '[43m',
-    blue: '[44m',
-    magenta: '[45m',
-    cyan: '[46m',
-    white: '[47m',
-  },
+reset: '[0m',
+bright: '[1m',
+dim: '[2m',
+underscore: '[4m',
+blink: '[5m',
+reverse: '[7m',
+hidden: '[8m',
+fg: {
+black: '[30m',
+red: '[31m',
+green: '[32m',
+yellow: '[33m',
+blue: '[34m',
+magenta: '[35m',
+cyan: '[36m',
+white: '[37m',
+},
+bg: {
+black: '[40m',
+red: '[41m',
+green: '[42m',
+yellow: '[43m',
+blue: '[44m',
+magenta: '[45m',
+cyan: '[46m',
+white: '[47m',
+},
+fg_RGB: (r, g, b) => {
+return `[38;2;${r};${g};${b}m`;
+},
 };
 
 // Decoraciones adicionales
 const decorations = {
-  underline: '[4m',
-  bold: '[1m',
-  italic: '[3m',
+underline: '[4m',
+bold: '[1m',
+italic: '[3m',
 };
 
 
@@ -109,6 +112,7 @@ if (!command.execute) {
 console.log(`${colors.fg.yellow}${decorations.bold}El comando ${commandName} no tiene una función execute${colors.reset}`);
 return;
 }
+
 await command.execute(message, args, client, message.content.startsWith(prefix)? prefix : '');
 } catch (error) {
 console.error(`${colors.fg.red}${decorations.bold}Error al ejecutar comando: ${error}${colors.reset}`);
@@ -135,24 +139,27 @@ client.on('error', (error) => {
 console.error(`${colors.fg.red}${decorations.bold}Error: ${error}${colors.reset}`);
 });
 
-
-// Función para actualizar código desde GitHub
 const updateCode = async () => {
 try {
-console.log(`${colors.fg.cyan}${decorations.bold}Actualizando código...${colors.reset}`);
-console.log(``);
-console.log(`${colors.fg.white})=> ${colors.reset} Git pull...`);
+console.log(`${colors.fg_RGB(0, 255, 0)} Actualizando código...${colors.reset}`);
 await git.pull('origin', 'main');
-console.log(`${colors.fg.green}${decorations.bold}=> ${colors.reset} Código actualizado correctamente!`);
-console.log(``);
-console.log(`${colors.fg.magenta}${decorations.bold}Reiniciando bot...${colors.reset}`);
-process.exit(); // Reiniciar el proceso para que se cargue el nuevo código
+console.log(`${colors.fg_RGB(0, 255, 0)} Código actualizado correctamente!${colors.reset}`);
+exec('node index.js'); // Reiniciar el proceso para que se cargue el nuevo código
 } catch (error) {
-console.error(`${colors.fg.red}${decorations.bold}Error al actualizar código: ${error}${colors.reset}`);
+console.error(`${colors.fg_RGB(255, 0, 0)} Error al actualizar código: ${error}${colors.reset}`);
 }
 };
 
-// Función para mostrar el menú principal
+const installDependencies = async () => {
+try {
+console.log(`${colors.fg_RGB(0, 255, 0)} Instalando dependencias...${colors.reset}`);
+exec('npm install');
+console.log(`${colors.fg_RGB(0, 255, 0)} Dependencias instaladas correctamente!${colors.reset}`);
+} catch (error) {
+console.error(`${colors.fg_RGB(255, 0, 0)} Error al instalar dependencias: ${error}${colors.reset}`);
+}
+};
+
 const showMenu = () => {
 console.clear(); // Limpiar la consola
 console.log(`${colors.fg_RGB(0, 255, 0)}T̳e̳r̳m̳u̳x̳ ̳D̳i̳s̳c̳o̳r̳d̳ ̳B̳o̳t̳${colors.reset}`);
@@ -164,7 +171,8 @@ console.log(`${colors.fg_RGB(255, 0, 0)}OPCIÓN${colors.reset}`);
 console.log(`----------`);
 console.log(`${colors.fg_RGB(0, 0, 255)}[1] Iniciar bot${colors.reset}`);
 console.log(`${colors.fg_RGB(0, 0, 255)}[2] Actualizar${colors.reset}`);
-console.log(`${colors.fg_RGB(0, 0, 255)}[3] Salir${colors.reset}`);
+console.log(`${colors.fg_RGB(0, 0, 255)}[3] Instalar dependencias${colors.reset}`);
+console.log(`${colors.fg_RGB(0, 0, 255)}[4] Salir${colors.reset}`);
 console.log(``);
 console.log(`Opción > `);
 };
@@ -195,6 +203,9 @@ case '2':
 updateCode();
 break;
 case '3':
+installDependencies();
+break;
+case '4':
 console.log(`${colors.fg_RGB(255, 0, 0)} Saliendo...${colors.reset}`);
 process.exit();
 break;
