@@ -160,6 +160,9 @@ console.error(`${colors.fg_RGB(255, 0, 0)} Error al instalar dependencias: ${err
 }
 };
 
+
+const childProcess = require('child_process');
+
 const showMenu = () => {
 console.clear(); // Limpiar la consola
 console.log(`Termux Discord Bot`);
@@ -199,10 +202,30 @@ prefixInput = prefix;
 });
 break;
 case '2':
-exec('git pull origin main && node index.js');
+childProcess.exec('git pull origin main && node index.js', (error, stdout, stderr) => {
+if (error) {
+console.error(`Error al actualizar código: ${error.message}`);
+return;
+}
+if (stderr) {
+console.error(`stderr: ${stderr}`);
+return;
+}
+console.log(`Código actualizado correctamente!`);
+});
 break;
 case '3':
-exec('npm install');
+childProcess.exec('npm install', (error, stdout, stderr) => {
+if (error) {
+console.error(`Error al instalar dependencias: ${error.message}`);
+return;
+}
+if (stderr) {
+console.error(`stderr: ${stderr}`);
+return;
+}
+console.log(`Dependencias instaladas correctamente!`);
+});
 break;
 case '4':
 console.log(' Saliendo...');
