@@ -20,11 +20,11 @@ const artistName = json.results[0].artist_name;
 const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
 
 const nekoEmbed = new Discord.EmbedBuilder()
-.setColor(randomColor) // Establece un color aleatorio
+.setColor(randomColor) 
 .setTitle(`Imagen de husbando obtenida de ${sourceUrl}`)
 .setImage(nekoImage)
-.setTimestamp() // Añade un timestamp al embed
-.setFooter({ text: `Autor: ${artistName}` }); // Añade un pie de página con el autor de la imagen
+.setTimestamp() 
+.setFooter({ text: `Autor: ${artistName}` }); 
 
 message.channel.send({ embeds: [nekoEmbed] });
 });
