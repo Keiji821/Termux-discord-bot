@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const readline = require('readline');
 const client = new Discord.Client({ intents: 131071 });
 
 const colors = {
