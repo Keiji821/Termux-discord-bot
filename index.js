@@ -169,17 +169,6 @@ console.log(``);
 console.log(`Opción > `);
 };
 
-const updateCode = async () => {
-try {
-console.log(`${colors.fg_RGB(0, 255, 0)} Actualizando código...${colors.reset}`);
-await git.pull('origin', 'main');
-console.log(`${colors.fg_RGB(0, 255, 0)} Código actualizado correctamente!${colors.reset}`);
-exec('node index.js'); // Reiniciar el proceso para que se cargue el nuevo código
-} catch (error) {
-console.error(`${colors.fg_RGB(255, 0, 0)} Error al actualizar código: ${error}${colors.reset}`);
-}
-};
-
 // Leer entrada del usuario
 const rl = readline.createInterface({
 input: process.stdin,
