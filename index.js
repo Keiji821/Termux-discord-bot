@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: 131071 });
-const prefix = ','; // Prefijo para los comandos
+let prefix = ''; // Prefijo para los comandos
 const fs = require('fs');
 const readline = require('readline');
 const git = require('simple-git')();
