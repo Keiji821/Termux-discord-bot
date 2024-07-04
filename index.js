@@ -12,17 +12,17 @@ output: process.stdout,
 
 const printBanner = () => {
 console.log(``);
-console.log(`  ${config.colors.fg.cyan}${config.decorations.bold}Termux Discord Bot${config.colors.reset}`);
+console.log(`  ${config.colors.bg.blue}${config.colors.fg.white} Termux Discord Bot ${config.colors.reset}`);
 console.log(``);
 };
 
 const printMenu = () => {
 console.log(``);
 console.log(`  ${config.colors.fg.white}Menú:`);
-console.log(`  ${config.colors.fg.white}1. Iniciar bot`);
-console.log(`  ${config.colors.fg.white}2. Configurar prefix`);
-console.log(`  ${config.colors.fg.white}3. Actualizar código desde GitHub`);
-console.log(`  ${config.colors.fg.white}4. Cerrar`);
+console.log(`  ${config.colors.fg.cyan}1. ${config.colors.fg.white}Iniciar bot`);
+console.log(`  ${config.colors.fg.cyan}2. ${config.colors.fg.white}Configurar prefix`);
+console.log(`  ${config.colors.fg.cyan}3. ${config.colors.fg.white}Actualizar código desde GitHub`);
+console.log(`  ${config.colors.fg.cyan}4. ${config.colors.fg.white}Cerrar`);
 console.log(``);
 };
 
@@ -32,6 +32,7 @@ rl.question('Token: ', (token) => {
 config.token = token;
 client.login(token);
 rl.close();
+printMenu();
 });
 };
 
@@ -41,6 +42,7 @@ rl.question('Prefix: ', (newPrefix) => {
 config.prefix = newPrefix;
 console.log(`${config.colors.fg.green}Prefix actualizado correctamente!`);
 rl.close();
+printMenu();
 });
 };
 
@@ -56,6 +58,7 @@ console.log(`${config.colors.fg.green}Actualización exitosa!`);
 console.log(`${config.colors.fg.green}Actualización completa!`);
 process.stdout.write(''); // Beaver beep
 require('./index.js'); // Restart script
+printMenu();
 }).catch((err) => {
 console.error(`Error updating code: ${err}`);
 });
