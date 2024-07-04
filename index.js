@@ -59,7 +59,7 @@ client.user.setActivity({ name: text, type: Discord.ActivityType.Playing });
 };
 
 // Manejador de comandos
-const commandHandler = async (message) => {
+const commandHandler = async (message, prefix) => {
 try {
 if (!message.content.startsWith(prefix)) return;
 const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -108,7 +108,7 @@ if (!command.execute) {
 console.log(`${colors.fg.yellow}${decorations.bold}El comando ${commandName} no tiene una función execute${colors.reset}`);
 return;
 }
-await command.execute(message, args, client);
+await command.execute(message, args, client, prefix);
 } catch (error) {
 console.error(`${colors.fg.red}${decorations.bold}Error al ejecutar comando: ${error}${colors.reset}`);
 message.reply(`Error al ejecutar comando: ${error}`);
