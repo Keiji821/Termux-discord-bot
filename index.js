@@ -61,6 +61,7 @@ client.user.setActivity({ name: text, type: Discord.ActivityType.Playing });
 // Manejador de comandos
 const commandHandler = async (message) => {
 try {
+if (!message.content.startsWith(prefix)) return;
 const args = message.content.slice(prefix.length).trim().split(/ +/);
 const commandName = args.shift().toLowerCase();
 let commandFile = null;
