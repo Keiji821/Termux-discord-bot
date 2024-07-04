@@ -138,45 +138,41 @@ console.log(`${colors.fg.red}${decorations.bold}El bot ${client.user.tag} se ha 
 
 
 const childProcess = require('child_process');
-const colorModule = require('colors');
-import chalk from 'chalk';
 
-process.stdout.write(chalk.hex('#23272E')); // Fondo de color de Discord
+process.stdout.write('[45m'); // Fondo de color de Discord
 
 const updateCode = async () => {
 try {
-console.log(`${chalk.bgGreen.black} Actualizando código...${chalk.reset}`);
+console.log('[32mActualizando código...[0m');
 await childProcess.exec('git pull origin main');
-console.log(`${chalk.bgGreen.black} Código actualizado correctamente!${chalk.reset}`);
+console.log('[32mCódigo actualizado correctamente![0m');
 await childProcess.exec('node index.js'); // Ejecutar el archivo index.js nuevamente
 } catch (error) {
-console.error(`${chalk.bgRed.black} Error al actualizar código: ${error}${chalk.reset}`);
+console.error('[31mError al actualizar código: ' + error + '[0m');
 }
 };
 
 const installDependencies = async () => {
 try {
-console.log(`${chalk.bgGreen.black} Instalando dependencias...${chalk.reset}`);
+console.log('[32mInstalando dependencias...[0m');
 await childProcess.exec('npm install');
-console.log(`${chalk.bgGreen.black} Dependencias instaladas correctamente!${chalk.reset}`);
+console.log('[32mDependencias instaladas correctamente![0m');
 } catch (error) {
-console.error(`${chalk.bgRed.black} Error al instalar dependencias: ${error}${chalk.reset}`);
+console.error('[31mError al instalar dependencias: ' + error + '[0m');
 }
 };
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-console.log(`${chalk.bgBlue.black} Termux Discord Bot ${chalk.reset}`);
-console.log(`${chalk.bgBlue.black}------------ ${chalk.reset}`);
-console.log(`${chalk.bgBlue.black}• Hecho por: Keiji821 ${chalk.reset}`);
-console.log(``);
-console.log(`${chalk.bgBlue.black}OPCIÓN ${chalk.reset}`);
-console.log(`${chalk.bgBlue.black}---------- ${chalk.reset}`);
-console.log(`${chalk.bgWhite.black}[1] Iniciar bot${chalk.reset}`);
-console.log(`${chalk.bgWhite.black}[2] Actualizar${chalk.reset}`);
-console.log(`${chalk.bgWhite.black}[3] Instalar dependencias${chalk.reset}`);
-console.log(`${chalk.bgWhite.black}[4] Salir${chalk.reset}`);
-console.log(``);
+console.log('[44m[30m          Termux Discord Bot          [0m'); // Banner centrado y destacado
+console.log('');
+console.log('[34mOPCIÓN[0m');
+console.log('[34m----------[0m');
+console.log('[35m[1] Iniciar bot[0m');
+console.log('[36m[2] Actualizar[0m');
+console.log('[37m[3] Instalar dependencias[0m');
+console.log('[31m[4] Salir[0m');
+console.log('');
 };
 
 const rl = readline.createInterface({
