@@ -137,8 +137,6 @@ console.log(`${colors.fg.red}${decorations.bold}El bot ${client.user.tag} se ha 
 
 
 const childProcess = require('child_process');
-const readline = require('readline');
-const colors = require('colors');
 
 const updateCode = async () => {
 try {
