@@ -160,7 +160,7 @@ console.log(`${colors.fg.cyan}${decorations.bold}[ Bot de Discord ]${colors.rese
 console.log(`${colors.fg.white}::Repositorio de uso libre::${colors.reset}`);
 console.log(`${colors.fg.white}::Hecho por: Keiji821::${colors.reset}`);
 console.log(``);
-console.log(`${colors.fg.magenta}${decorations.bold}[ • • ] ELIJE UNA OPCIÓN [  • •  ]${colors.reset}`);
+console.log(`${colors.fg.magenta}${decorations.bold}ELIJE UNA OPCIÓN${colors.reset}`);
 console.log(`${colors.fg.white}[1] Iniciar bot${colors.reset}`);
 console.log(`${colors.fg.white}[2] Actualizar${colors.reset}`);
 console.log(`${colors.fg.white}[3] Salir${colors.reset}`);
