@@ -181,6 +181,7 @@ console.log('');
 process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú extendido hasta la opción "Opción:"
 console.log('Opción: ');
 process.stdout.write(`[0m`); // Resetear color
+readline.cursorTo(process.stdout, 0, 7); // Mover el cursor a la posición 0, 7
 };
 
 const rl = readline.createInterface({
@@ -195,11 +196,21 @@ switch (option) {
 case '1':
 console.log('Ingrese el token del bot: ');
 rl.question('Token: ', (token) => {
+if (token === '') {
+console.log('Token invalido');
+showMenu();
+} else {
 client.login(token);
 console.log('Ingrese el prefijo del bot: ');
 rl.question('Prefijo: ', (prefix) => {
+if (prefix === '') {
+console.log('Prefix invalido');
+showMenu();
+} else {
 prefixInput = prefix;
+}
 });
+}
 });
 break;
 case '2':
