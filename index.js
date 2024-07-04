@@ -173,7 +173,7 @@ console.error(`[31mError al instalar dependencias: ${error}[0m`);
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú
+process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú en el color del Discord Nitro Boost
 console.log(`[44m[30m          Termux Discord Bot          [0m`); // Banner centrado y destacado
 console.log('');
 console.log(`[34mOPCIÓN[0m`);
@@ -184,7 +184,7 @@ console.log(`[37m[3] Instalar dependencias[0m`);
 console.log(`[31m[4] Salir[0m`);
 console.log('');
 console.log('');
-process.stdout.write(`Opción: `); // Mostrar la casilla "Opción:"
+process.stdout.write(`[37mOpción: [0m`); // Escribir el texto "Opción: " en la consola
 readline.cursorTo(process.stdout, 0, 7); // Mover el cursor a la posición 0, 7
 process.stdout.write(`[0m`); // Resetear color
 rl.prompt(); // Mostrar la casilla "Opción:"
