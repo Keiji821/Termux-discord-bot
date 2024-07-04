@@ -173,7 +173,7 @@ console.error(`[31mError al instalar dependencias: ${error}[0m`);
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú en el color del Discord Nitro Boost
+process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú
 console.log(`[44m[30m          Termux Discord Bot          [0m`); // Banner centrado y destacado
 console.log('');
 console.log(`[34mOPCIÓN[0m`);
