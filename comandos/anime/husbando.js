@@ -4,8 +4,7 @@ const https = require('https');
 module.exports = {
 name: 'husbando',
 description: 'Obtiene una imagen de husbando aleatoria',
-execute(message, args, client, prefix) {
-if (!message.content.startsWith(prefix)) return;
+execute(message, args, client) {
 https.get('https://nekos.best/api/v2/husbando', (res) => {
 let data = '';
 res.on('data', (chunk) => {
@@ -20,11 +19,11 @@ const artistName = json.results[0].artist_name;
 const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
 
 const nekoEmbed = new Discord.EmbedBuilder()
-.setColor(randomColor) 
+.setColor(randomColor) // Establece un color aleatorio
 .setTitle(`Imagen de husbando obtenida de ${sourceUrl}`)
 .setImage(nekoImage)
-.setTimestamp() 
-.setFooter({ text: `Autor: ${artistName}` }); 
+.setTimestamp() // Añade un timestamp al embed
+.setFooter({ text: `Autor: ${artistName}` }); // Añade un pie de página con el autor de la imagen
 
 message.channel.send({ embeds: [nekoEmbed] });
 });
