@@ -176,7 +176,7 @@ console.clear(); // Limpiar la consola
 process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú en el color del Discord Nitro Boost
 console.log(`[44m[30m          Termux Discord Bot          [0m`); // Banner centrado y destacado
 console.log('');
-console.log(`[34mOPCIÓN[0m`);
+console.log(`[34mHecho por: Keiji821 [0m`);
 console.log(`[34m----------[0m`);
 console.log(`[35m[1] Iniciar bot[0m`);
 console.log(`[36m[2] Actualizar[0m`);
