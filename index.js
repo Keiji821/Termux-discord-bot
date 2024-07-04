@@ -162,17 +162,16 @@ console.error(`${colors.fg_RGB(255, 0, 0)} Error al instalar dependencias: ${err
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-console.log(`${colors.fg_RGB(0, 255, 0)}T̳e̳r̳m̳u̳x̳ ̳D̳i̳s̳c̳o̳r̳d̳ ̳B̳o̳t̳${colors.reset}`);
-console.log(`${colors.fg_RGB(0, 255, 0)}Bot de discord${colors.reset}`);
+console.log(`Termux Discord Bot`);
 console.log(`------------`);
-console.log(`${colors.fg_RGB(255, 255, 0)}• Hecho por: Keiji821${colors.reset}`);
+console.log(`• Hecho por: Keiji821`);
 console.log(``);
-console.log(`${colors.fg_RGB(255, 0, 0)}OPCIÓN${colors.reset}`);
+console.log(`OPCIÓN`);
 console.log(`----------`);
-console.log(`${colors.fg_RGB(0, 0, 255)}[1] Iniciar bot${colors.reset}`);
-console.log(`${colors.fg_RGB(0, 0, 255)}[2] Actualizar${colors.reset}`);
-console.log(`${colors.fg_RGB(0, 0, 255)}[3] Instalar dependencias${colors.reset}`);
-console.log(`${colors.fg_RGB(0, 0, 255)}[4] Salir${colors.reset}`);
+console.log(`[1] Iniciar bot`);
+console.log(`[2] Actualizar`);
+console.log(`[3] Instalar dependencias`);
+console.log(`[4] Salir`);
 console.log(``);
 console.log(`Opción > `);
 };
@@ -200,17 +199,17 @@ prefixInput = prefix;
 });
 break;
 case '2':
-updateCode();
+exec('git pull origin main && node index.js');
 break;
 case '3':
-installDependencies();
+exec('npm install');
 break;
 case '4':
-console.log(`${colors.fg_RGB(255, 0, 0)} Saliendo...${colors.reset}`);
+console.log(' Saliendo...');
 process.exit();
 break;
 default:
-console.log(`${colors.fg_RGB(255, 0, 0)} Opción inválida${colors.reset}`);
+console.log(' Opción inválida');
 console.clear(); // Limpiar la consola
 showMenu(); // Volver a mostrar el menú principal
 }
