@@ -137,42 +137,50 @@ console.log(`${colors.fg.red}${decorations.bold}El bot ${client.user.tag} se ha 
 
 
 
-const childProcess = require('child_process');
+const childProcess = require('childProcess');
 
-process.stdout.write('[45m'); // Fondo de color de Discord
+process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú en el color del Discord Nitro Boost
 
 const updateCode = async () => {
 try {
-console.log('[32mActualizando código...[0m');
+console.log(`[32mActualizando código...[0m`);
 await childProcess.exec('git pull origin main');
-console.log('[32mCódigo actualizado correctamente![0m');
+console.log(`[32mCódigo actualizado correctamente![0m`);
 await childProcess.exec('node index.js'); // Ejecutar el archivo index.js nuevamente
+console.clear(); // Limpiar la consola
+showMenu(); // Volver a mostrar el menú principal
 } catch (error) {
-console.error('[31mError al actualizar código: ' + error + '[0m');
+console.error(`[31mError al actualizar código: ${error}[0m`);
 }
 };
 
 const installDependencies = async () => {
 try {
-console.log('[32mInstalando dependencias...[0m');
+console.log(`[32mInstalando dependencias...[0m`);
 await childProcess.exec('npm install');
-console.log('[32mDependencias instaladas correctamente![0m');
+console.log(`[32mDependencias instaladas correctamente![0m`);
+console.clear(); // Limpiar la consola
+showMenu(); // Volver a mostrar el menú principal
 } catch (error) {
-console.error('[31mError al instalar dependencias: ' + error + '[0m');
+console.error(`[31mError al instalar dependencias: ${error}[0m`);
 }
 };
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-console.log('[44m[30m          Termux Discord Bot          [0m'); // Banner centrado y destacado
+process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú en el color del Discord Nitro Boost
+console.log(`[44m[30m          Termux Discord Bot          [0m`); // Banner centrado y destacado
 console.log('');
-console.log('[34mOPCIÓN[0m');
-console.log('[34m----------[0m');
-console.log('[35m[1] Iniciar bot[0m');
-console.log('[36m[2] Actualizar[0m');
-console.log('[37m[3] Instalar dependencias[0m');
-console.log('[31m[4] Salir[0m');
+console.log(`[34mOPCIÓN[0m`);
+console.log(`[34m----------[0m`);
+console.log(`[35m[1] Iniciar bot[0m`);
+console.log(`[36m[2] Actualizar[0m`);
+console.log(`[37m[3] Instalar dependencias[0m`);
+console.log(`[31m[4] Salir[0m`);
 console.log('');
+process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú extendido hasta la opción "Opción:"
+console.log('Opción: ');
+process.stdout.write(`[0m`); // Resetear color
 };
 
 const rl = readline.createInterface({
@@ -182,7 +190,7 @@ output: process.stdout
 
 showMenu();
 
-rl.question('Opción: ', (option) => {
+rl.question(' ', (option) => {
 switch (option) {
 case '1':
 console.log('Ingrese el token del bot: ');
