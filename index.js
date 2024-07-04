@@ -138,7 +138,7 @@ console.log(`${colors.fg.red}${decorations.bold}El bot ${client.user.tag} se ha 
 
 
 const childProcess = require('child_process');
-const colors = require('colors');
+const colorModule = require('colors');
 const chalk = require('chalk');
 
 process.stdout.write(chalk.hex('#23272E')); // Fondo de color de Discord
