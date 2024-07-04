@@ -162,23 +162,28 @@ process.exit();
 } else if (option === '3') {
 console.log(`${colors.fg.yellow}${decorations.bold}Actualización de código desde el repositorio de GitHub... ${colors.reset}`);
 
-rl.question('Option: ', (option) => {
-  if (option === '1') {
-    console.log(`${colors.fg.green}${decorations.bold}Ingrese el token para iniciar el bot: ${colors.reset}`);
-    rl.question('Token: ', (token) => {
-      client.login(token);
-      rl.close();
-    });
-  } else if (option === '2') {
-    console.log(`${colors.fg.red}${decorations.bold}Bot detenido ${colors.reset}`);
-    process.exit();
-  } else if (option === '3') {
-    console.log(`${colors.fg.yellow}${decorations.bold}Actualización de código desde el repositorio de GitHub... ${colors.reset}`);
-    git.pull('origin', 'main', (err, update) => {
-      if (err) {
-        console.error(err);
-      } else {
-        console.log(`${colors.fg.green}${decorations.bold}Actualización exitosa! ${colors.reset}`);
-      }
-    });
-  }
+rl.question('Opción: ', (option) => {
+if (option === '1') {
+console.log(`${colors.fg.green}${decorations.bold}Ingresar token para iniciar bot: ${colors.reset}`);
+rl.question('Token: ', (token) => {
+client.login(token);
+rl.close();
+});
+} else if (option === '2') {
+console.log(`${colors.fg.red}${decorations.bold}Bot detenido ${colors.reset}`);
+process.exit();
+} else if (option === '3') {
+console.log(`${colors.fg.yellow}${decorations.bold}Actualizando código desde repositorio de GitHub... ${colors.reset}`);
+git.pull('origin', 'main', (err, update) => {
+if (err) {
+console.error(err);
+} else {
+console.log(`${colors.fg.green}${decorations.bold}Actualización exitosa! ${colors.reset}`);
+}
+}).then(() => {
+console.log(`${colors.fg.green}${decorations.bold}Actualización completa! ${colors.reset}`);
+}).catch((err) => {
+console.error(err);
+});
+}
+});
