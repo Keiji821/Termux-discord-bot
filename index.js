@@ -160,17 +160,16 @@ console.error(`${colors.fg_RGB(255, 0, 0)} Error al instalar dependencias: ${err
 }
 };
 
-
 const childProcess = require('child_process');
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-console.log(`Termux Discord Bot`);
-console.log(`------------`);
-console.log(`• Hecho por: Keiji821`);
+console.log(`%cTermux Discord Bot`, `background-color: #333; color: #fff`);
+console.log(`%c------------`, `background-color: #333; color: #fff`);
+console.log(`%c• Hecho por: Keiji821`, `background-color: #333; color: #fff`);
 console.log(``);
-console.log(`OPCIÓN`);
-console.log(`----------`);
+console.log(`%cOPCIÓN`, `background-color: #333; color: #fff`);
+console.log(`%c----------`, `background-color: #333; color: #fff`);
 console.log(`[1] Iniciar bot`);
 console.log(`[2] Actualizar`);
 console.log(`[3] Instalar dependencias`);
@@ -202,29 +201,39 @@ prefixInput = prefix;
 });
 break;
 case '2':
+console.log('%cActualizando código...', `background-color: #333; color: #fff`);
+const updateSpinner = spinner('Actualizando código...');
 childProcess.exec('git pull origin main && node index.js', (error, stdout, stderr) => {
 if (error) {
 console.error(`Error al actualizar código: ${error.message}`);
+updateSpinner.fail();
 return;
 }
 if (stderr) {
 console.error(`stderr: ${stderr}`);
+updateSpinner.fail();
 return;
 }
-console.log(`Código actualizado correctamente!`);
+console.log('%cCódigo actualizado correctamente!', `background-color: #333; color: #fff`);
+updateSpinner.succeed();
 });
 break;
 case '3':
+console.log('%cInstalando dependencias...', `background-color: #333; color: #fff`);
+const installSpinner = spinner('Instalando dependencias...');
 childProcess.exec('npm install', (error, stdout, stderr) => {
 if (error) {
 console.error(`Error al instalar dependencias: ${error.message}`);
+installSpinner.fail();
 return;
 }
 if (stderr) {
 console.error(`stderr: ${stderr}`);
+installSpinner.fail();
 return;
 }
-console.log(`Dependencias instaladas correctamente!`);
+console.log('%cDependencias instaladas correctamente!', `background-color: #333; color: #fff`);
+installSpinner.succeed();
 });
 break;
 case '4':
@@ -237,3 +246,22 @@ console.clear(); // Limpiar la consola
 showMenu(); // Volver a mostrar el menú principal
 }
 });
+
+function spinner(text) {
+const spinnerFrames = '|/-\';
+let frameIndex = 0;
+let timer = setInterval(() => {
+console.log(`${text} ${spinnerFrames[frameIndex++ % spinnerFrames.length]}`);
+}, 100);
+return {
+succeed: () => {
+console.log('%cOperación realizada con éxito!', `background-color: #333; color: #fff`);
+clearInterval(timer);
+},
+fail: () => {
+console.log('%cError al realizar la operación', `background-color: #333; color: #fff`);
+clearInterval(timer);
+}
+};
+}
+
