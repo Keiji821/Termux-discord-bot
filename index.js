@@ -135,31 +135,36 @@ client.on('disconnect', () => {
 console.log(`${colors.fg.red}${decorations.bold}El bot ${client.user.tag} se ha desconectado correctamente!${colors.reset}`);
 });
 
-client.on('error', (error) => {
-console.error(`${colors.fg.red}${decorations.bold}Error: ${error}${colors.reset}`);
-});
-
 
 const childProcess = require('child_process');
 const colorModule = require('colors');
+const readline = require('readline');
+
+const client = {
+on: {
+error: (error) => {
+console.error(`${colorModule.fg.red}${colorModule.bold}Error: ${error}${colorModule.reset}`);
+}
+}
+};
 
 const updateCode = async () => {
 try {
-console.log(`${colors.fg_RGB(0, 255, 0)} Actualizando código...${colors.reset}`);
+console.log(`${colorModule.fg.green} Actualizando código...${colorModule.reset}`);
 await childProcess.exec('git pull origin main && node index.js');
-console.log(`${colors.fg_RGB(0, 255, 0)} Código actualizado correctamente!${colors.reset}`);
+console.log(`${colorModule.fg.green} Código actualizado correctamente!${colorModule.reset}`);
 } catch (error) {
-console.error(`${colors.fg_RGB(255, 0, 0)} Error al actualizar código: ${error}${colors.reset}`);
+console.error(`${colorModule.fg.red} Error al actualizar código: ${error}${colorModule.reset}`);
 }
 };
 
 const installDependencies = async () => {
 try {
-console.log(`${colors.fg_RGB(0, 255, 0)} Instalando dependencias...${colors.reset}`);
+console.log(`${colorModule.fg.green} Instalando dependencias...${colorModule.reset}`);
 await childProcess.exec('npm install');
-console.log(`${colors.fg_RGB(0, 255, 0)} Dependencias instaladas correctamente!${colors.reset}`);
+console.log(`${colorModule.fg.green} Dependencias instaladas correctamente!${colorModule.reset}`);
 } catch (error) {
-console.error(`${colors.fg_RGB(255, 0, 0)} Error al instalar dependencias: ${error}${colors.reset}`);
+console.error(`${colorModule.fg.red} Error al instalar dependencias: ${error}${colorModule.reset}`);
 }
 };
 
@@ -178,16 +183,13 @@ console.log(`[4] Salir`);
 console.log(``);
 };
 
-// Leer entrada del usuario
 const rl = readline.createInterface({
 input: process.stdin,
 output: process.stdout
 });
 
-// Mostrar menú principal
 showMenu();
 
-// Leer opción del usuario
 rl.question('Opción: ', (option) => {
 switch (option) {
 case '1':
@@ -195,6 +197,7 @@ console.log('Ingrese el token del bot: ');
 rl.question('Token: ', (token) => {
 client.login(token);
 console.log('Ingrese el prefijo del bot: ');
+
 rl.question('Prefijo: ', (prefix) => {
 prefixInput = prefix;
 });
@@ -218,3 +221,4 @@ console.clear(); // Limpiar la consola
 showMenu(); // Volver a mostrar el menú principal
 }
 });
+
