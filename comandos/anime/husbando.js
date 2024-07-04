@@ -4,7 +4,8 @@ const https = require('https');
 module.exports = {
 name: 'husbando',
 description: 'Obtiene una imagen de husbando aleatoria',
-execute(message, args, client) {
+execute(message, args, client, prefix) {
+if (!message.content.startsWith(prefix)) return;
 https.get('https://nekos.best/api/v2/husbando', (res) => {
 let data = '';
 res.on('data', (chunk) => {
