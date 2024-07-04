@@ -178,9 +178,8 @@ console.log(`[36m[2] Actualizar[0m`);
 console.log(`[37m[3] Instalar dependencias[0m`);
 console.log(`[31m[4] Salir[0m`);
 console.log('');
-process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú extendido hasta la opción "Opción:"
-console.log('Opción: ');
-process.stdout.write(`[0m`); // Resetear color
+console.log('');
+process.stdout.write(`Opción: `); // Mostrar la casilla "Opción:"
 readline.cursorTo(process.stdout, 0, 7); // Mover el cursor a la posición 0, 7
 };
 
