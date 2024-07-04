@@ -139,7 +139,7 @@ console.log(`${colors.fg.red}${decorations.bold}El bot ${client.user.tag} se ha 
 const childProcess = require('child_process');
 const colorModule = require('colors');
 
-const client = {
+const discordClient = {
 on: {
 error: (error) => {
 console.error(`${colorModule.fg.red}${colorModule.bold}Error: ${error}${colorModule.reset}`);
