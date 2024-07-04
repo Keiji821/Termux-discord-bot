@@ -155,17 +155,29 @@ console.error(`${colors.fg.red}${decorations.bold}Error al actualizar código: $
 // Función para mostrar el menú principal
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-console.log(`${colors.fg.cyan}${decorations.bold}Termux Discord Bot${colors.reset}`);
-console.log(`${colors.fg.cyan}${decorations.bold}[ Bot de Discord ]${colors.reset}`);
-console.log(`${colors.fg.white}::Repositorio de uso libre::${colors.reset}`);
-console.log(`${colors.fg.white}::Hecho por: Keiji821::${colors.reset}`);
+console.log(`${colors.fg_RGB(0, 255, 0)}T̳e̳r̳m̳u̳x̳ ̳D̳i̳s̳c̳o̳r̳d̳ ̳B̳o̳t̳${colors.reset}`);
+console.log(`${colors.fg_RGB(0, 255, 0)}Bot de discord${colors.reset}`);
+console.log(`------------`);
+console.log(`${colors.fg_RGB(255, 255, 0)}• Hecho por: Keiji821${colors.reset}`);
 console.log(``);
-console.log(`${colors.fg.magenta}${decorations.bold}ELIJE UNA OPCIÓN${colors.reset}`);
-console.log(`${colors.fg.white}[1] Iniciar bot${colors.reset}`);
-console.log(`${colors.fg.white}[2] Actualizar${colors.reset}`);
-console.log(`${colors.fg.white}[3] Salir${colors.reset}`);
+console.log(`${colors.fg_RGB(255, 0, 0)}OPCIÓN${colors.reset}`);
+console.log(`----------`);
+console.log(`${colors.fg_RGB(0, 0, 255)}[1] Iniciar bot${colors.reset}`);
+console.log(`${colors.fg_RGB(0, 0, 255)}[2] Actualizar${colors.reset}`);
+console.log(`${colors.fg_RGB(0, 0, 255)}[3] Salir${colors.reset}`);
 console.log(``);
-console.log(`Entrada >> `);
+console.log(`Opción > `);
+};
+
+const updateCode = async () => {
+try {
+console.log(`${colors.fg_RGB(0, 255, 0)} Actualizando código...${colors.reset}`);
+await git.pull('origin', 'main');
+console.log(`${colors.fg_RGB(0, 255, 0)} Código actualizado correctamente!${colors.reset}`);
+exec('node index.js'); // Reiniciar el proceso para que se cargue el nuevo código
+} catch (error) {
+console.error(`${colors.fg_RGB(255, 0, 0)} Error al actualizar código: ${error}${colors.reset}`);
+}
 };
 
 // Leer entrada del usuario
@@ -194,12 +206,12 @@ case '2':
 updateCode();
 break;
 case '3':
-console.log(`${colors.fg.red}${decorations.bold}Saliendo...${colors.reset}`);
+console.log(`${colors.fg_RGB(255, 0, 0)} Saliendo...${colors.reset}`);
 process.exit();
 break;
 default:
-console.log(`${colors.fg.red}${decorations.bold}Opción inválida${colors.reset}`);
-showMenu();
+console.log(`${colors.fg_RGB(255, 0, 0)} Opción inválida${colors.reset}`);
+console.clear(); // Limpiar la consola
+showMenu(); // Volver a mostrar el menú principal
 }
 });
-
