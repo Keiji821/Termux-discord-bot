@@ -141,6 +141,11 @@ const { exec } = require('child_process');
 
 process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú en el color del Discord Nitro Boost
 
+const rl = readline.createInterface({
+input: process.stdin,
+output: process.stdout
+});
+
 const updateCode = async () => {
 try {
 console.log(`[32mActualizando código...[0m`);
@@ -185,15 +190,10 @@ process.stdout.write(`[0m`); // Resetear color
 rl.prompt(); // Mostrar la casilla "Opción:"
 };
 
-const rl = readline.createInterface({
-input: process.stdin,
-output: process.stdout
-});
-
 showMenu(); // Mostrar el menú principal al inicio
 
-rl.question(' ', (option) => {
-switch (option) {
+rl.on('line', (option) => {
+switch (option.trim()) {
 case '1':
 console.log('Ingrese el token del bot: ');
 rl.question('Token: ', (token) => {
@@ -232,4 +232,6 @@ console.log(' Opción inválida');
 console.clear(); // Limpiar la consola
 showMenu(); // Volver a mostrar el menú principal
 }
+}).on('close', () => {
+process.exit();
 });
