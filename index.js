@@ -141,7 +141,7 @@ console.error(`${colors.fg.red}${decorations.bold}Error: ${error}${colors.reset}
 
 
 const childProcess = require('child_process');
-const colors = require('colors');
+const colorModule = require('colors');
 
 const updateCode = async () => {
 try {
