@@ -114,7 +114,7 @@ message.reply(`Error al ejecutar comando: ${error}`);
 }
 };
 
-// Eventos del bot
+
 client.on('ready', async () => {
 startupMessage();
 setStatus('online');
@@ -152,8 +152,13 @@ rl.question('Opción: ', (option) => {
 if (option === '1') {
 console.log(`${colors.fg.green}${decorations.bold}Ingresa el token de tu bot para iniciarlo: ${colors.reset}`);
 rl.question('Token: ', (token) => {
+console.log(`${colors.fg.green}${decorations.bold}Ingresa el prefijo que va a utilizar el bot: ${colors.reset}`);
+rl.question('Prefijo: ', (prefixInput) => {
+prefix = prefixInput;
 client.login(token);
+console.log(`${colors.fg.green}${decorations.bold}Bot iniciado correctamente!${colors.reset}`);
 rl.close();
+});
 });
 } else if (option === '2') {
 console.log(`${colors.fg.red}${decorations.bold}Menú detenido!${colors.reset}`);
@@ -168,7 +173,15 @@ console.log(`${colors.fg.green}${decorations.bold}Actualización exitosa!${color
 }
 }).then(() => {
 console.log(`${colors.fg.green}${decorations.bold}Actualización completada!${colors.reset}`);
-rl.close();
+// Vuelve a ejecutar el menú principal después de actualizar el código
+console.log(`${colors.fg.blue}${decorations.bold}Bienvenido a Termux Bot!${colors.reset}`);
+console.log(`${colors.fg.cyan}${decorations.italic}Por favor, selecciona una opción: ${colors/reset}`);
+console.log(`${colors.fg.green}${decorations.bold}1. Iniciar bot${colors.reset}`);
+console.log(`${colors.fg.red}${decorations.bold}2. Cerrar menú${colors.reset}`);
+console.log(`${colors.fg.yellow}${decorations.bold}3. Actualizar código desde el repositorio de GitHub${colors.reset}`);
+rl.question('Opción: ', (option) => {
+//...
+});
 }).catch((err) => {
 console.error(err);
 rl.close();
