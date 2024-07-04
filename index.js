@@ -173,7 +173,7 @@ rl.close();
 console.log(`${colors.fg.red}${decorations.bold}Bot detenido ${colors.reset}`);
 process.exit();
 } else if (option === '3') {
-console.log(`${colors.fg.yellow}${decorations.bold}Actualizando código desde repositorio de GitHub... ${colors.reset}`);
+console.log(`${colors.fg.yellow}${decorations.bold}Actualizando código desde el repositorio de GitHub... ${colors.reset}`);
 git.pull('origin', 'main', (err, update) => {
 if (err) {
 console.error(err);
@@ -185,5 +185,7 @@ console.log(`${colors.fg.green}${decorations.bold}Actualización completa! ${col
 }).catch((err) => {
 console.error(err);
 });
+rl.close(); // Add this line to close the rl.question method
 }
+rl.close(); // Add this line to close the rl.question method
 });
