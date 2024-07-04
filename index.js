@@ -122,7 +122,7 @@ client.on('error', (error) => {
 console.error(`${colors.fg.red}Error: ${error}${colors.reset}`);
 });
 
-client.login('MTA0NTg3OTAxNjYzMDAwNTg0Mw.GEcFyc.gIzQlhOvjVm3At5JUPL1oV56MTJPLnBcWKmcwc');
+client.login('');
 
 // Agregué algunas funciones adicionales para mejorar la experiencia del usuario
 
