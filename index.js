@@ -135,7 +135,7 @@ client.on('error', (error) => {
 console.error(`${colors.fg.red}${decorations.bold}Error: ${error}${colors.reset}`);
 });
 
-// Pedir token del bot al iniciar el archivo index.js
+
 const rl = readline.createInterface({
 input: process.stdin,
 output: process.stdout,
@@ -152,9 +152,10 @@ rl.question('Opción: ', (option) => {
 if (option === '1') {
 console.log(`${colors.fg.green}${decorations.bold}Ingresa el token de tu bot para iniciarlo: ${colors.reset}`);
 rl.question('Token: ', (token) => {
+let prefixInput = ''; // Declarar variable para el prefijo
 console.log(`${colors.fg.green}${decorations.bold}Ingresa el prefijo que va a utilizar el bot: ${colors.reset}`);
-rl.question('Prefijo: ', (prefixInput) => {
-prefix = prefixInput;
+rl.question('Prefijo: ', (prefix) => {
+prefixInput = prefix; // Asignar el valor del prefijo
 client.login(token);
 console.log(`${colors.fg.green}${decorations.bold}Bot iniciado correctamente!${colors.reset}`);
 rl.close();
@@ -174,7 +175,7 @@ console.log(`${colors.fg.green}${decorations.bold}Actualización exitosa!${color
 }).then(() => {
 console.log(`${colors.fg.green}${decorations.bold}Actualización completada!${colors.reset}`);
 // Vuelve a ejecutar el menú principal después de actualizar el código
-console.log(`${colors.fg.blue}${decorations.bold}Bienvenido a Termux Bot!${colors.reset}`);
+console.log(`${colors.fg.blue}${decorations.bold} Bienvenido a Termux Bot!${colors.reset}`);
 console.log(`${colors.fg.cyan}${decorations.italic}Por favor, selecciona una opción: ${colors/reset}`);
 console.log(`${colors.fg.green}${decorations.bold}1. Iniciar bot${colors.reset}`);
 console.log(`${colors.fg.red}${decorations.bold}2. Cerrar menú${colors.reset}`);
@@ -188,4 +189,3 @@ rl.close();
 });
 }
 });
-
