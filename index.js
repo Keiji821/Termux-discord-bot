@@ -177,12 +177,12 @@ process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú en el color del Dis
 console.log(`[44m[30m          Termux Discord Bot          [0m`); // Banner centrado y destacado
 console.log('');
 console.log(`[34mHecho por: Keiji821 [0m`);
-console.log(`[34m----------[0m`);
-console.log(`[35m[1] Iniciar bot[0m`);
-console.log(`[36m[2] Actualizar[0m`);
-console.log(`[37m[3] Instalar dependencias[0m`);
-console.log(`[31m[4] Salir[0m`);
-console.log('');
+console.log(`[34m「⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m`);
+console.log(`[35m｜[1] Iniciar bot[0m`);
+console.log(`[36m｜[2] Actualizar[0m`);
+console.log(`[37m｜[3] Instalar dependencias[0m`);
+console.log(`[31m｜[4] Salir[0m`);
+console.log('34m  ﹂⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻[0m');
 console.log('');
 rl.setPrompt(`Opción: `); // Establecer el texto de la casilla "Opción: "
 rl.prompt(); // Mostrar la casilla "Opción:"
