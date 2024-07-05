@@ -171,13 +171,13 @@ console.error(`[31mError al instalar dependencias: ${error}[0m`);
 const showMenu = () => {
 console.clear(); // Limpiar la consola
 console.log('[45m[37m          Termux Discord Bot          [0m');
-console.log('[32mHecho por: Keiji821[0m');
-console.log('[36m「⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎫[0m');
-console.log('[32m｜[1] Iniciar bot｜[0m');
-console.log('[36m｜[2] Actualizar｜[0m');
+console.log('[32m☆ Hecho por: Keiji821[0m');
+console.log('[36m「⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎫[0m');
+console.log('[32m｜[1] Iniciar bot.      ｜[0m');
+console.log('[36m｜[2] Actualizar        ｜[0m');
 console.log('[33m｜[3] Instalar dependencias｜[0m');
-console.log('[31m｜[4] Salir｜[0m');
-console.log('[36m ﹂⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽｣[0m');
+console.log('[31m｜[4] Salir             ｜[0m');
+console.log('[36m ﹂⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽｣[0m');
 rl.setPrompt(`Opción: `); // Establecer el texto de la casilla "Opción: "
 rl.prompt(); // Mostrar la casilla "Opción:"
 };
