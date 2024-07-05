@@ -174,7 +174,7 @@ console.log('[32m｜🪐 Hecho por: Keiji821[0m');
 console.log('[36m⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃[0m');
 console.log('[32m▏[1] Iniciar bot             ︳[0m');
 console.log('[36m▏[2] Actualizar              ︳[0m');
-console.log('[33m▏[3] Instalar dependencias  ｜[0m');
+console.log('[33m▏[3] Instalar dependencias  ︳[0m');
 console.log('[31m▏[4] Salir                   ︳[0m');
 console.log('[36m⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍[0m');
 rl.setPrompt(`[32m [33m｜Opción➤ [0m`); // Establecer el texto de la casilla "Opción: "
