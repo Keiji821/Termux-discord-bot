@@ -169,7 +169,7 @@ console.error(`[31mError al instalar dependencias: ${error}[0m`);
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-console.log('[36m[1m       Termux Discord Bot          [0m');
+console.log('[31m[1m       Termux Discord Bot          [0m');
 console.log('[32m🍁 Hecho por: Keiji821[0m');
 console.log('[36m⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃[0m');
 console.log('[32m▏[1] Iniciar bot             ︳[0m');
