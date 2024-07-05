@@ -45,7 +45,7 @@ italic: '[3m',
 
 //Función para mostrar mensaje de inicio
 const startupMessage = () => {
-console.log('[32mEl bot ' + client.user.tag + ' se ha conectado correctamente! [OK][0m');
+console.log('[32m🟢 El bot ' + client.user.tag + ' se ha conectado correctamente! [0m');
 };
 
 // Función para establecer el estado del bot
