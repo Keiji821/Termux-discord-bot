@@ -7,35 +7,32 @@ const git = require('simple-git')();
 
 // Configuración de colores y decoraciones para la consola
 const colors = {
-reset: '[0m',
-bright: '[1m',
-dim: '[2m',
-underscore: '[4m',
-blink: '[5m',
-reverse: '[7m',
-hidden: '[8m',
+reset: '[0m',
+bright: '[1m',
+dim: '[2m',
+underscore: '[4m',
+blink: '[5m',
+reverse: '[7m',
+hidden: '[8m',
 fg: {
-black: '[30m',
-red: '[31m',
-green: '[32m',
-yellow: '[33m',
-blue: '[34m',
-magenta: '[35m',
-cyan: '[36m',
-white: '[37m',
+black: '[30m',
+red: '[31m',
+green: '[32m',
+yellow: '[33m',
+blue: '[34m',
+magenta: '[35m',
+cyan: '[36m',
+white: '[37m',
 },
 bg: {
-black: '[40m',
-red: '[41m',
-green: '[42m',
-yellow: '[43m',
-blue: '[44m',
-magenta: '[45m',
-cyan: '[46m',
-white: '[47m',
-},
-fg_RGB: (r, g, b) => {
-return `[38;2;${r};${g};${b}m`;
+black: '[40m',
+red: '[41m',
+green: '[42m',
+yellow: '[43m',
+blue: '[44m',
+magenta: '[45m',
+cyan: '[46m',
+white: '[47m',
 },
 };
 
@@ -172,20 +169,20 @@ console.error(`[31mError al instalar dependencias: ${error}[0m`);
 };
 
 const showMenu = () => {
-  console.clear(); // Limpiar la consola
-  process.stdout.write(colors.bg_RGB(35, 40, 40)); // Fondo del menú en el color del Discord Nitro Boost
-  console.log(`${colors.fg_RGB(255, 255, 255)}          Termux Discord Bot          ${colors.reset}`); // Banner centrado y destacado
-  console.log('');
-  console.log(`${colors.fg_green}Hecho por: Keiji821${colors.reset}`);
-  console.log(`${colors.fg_cyan}「⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺」${colors.reset}`);
-  console.log(`${colors.fg_green}｜[1] Iniciar bot${colors.reset}`);
-  console.log(`${colors.fg_cyan}｜[2] Actualizar${colors.reset}`);
-  console.log(`${colors.fg_yellow}｜[3] Instalar dependencias${colors.reset}`);
-  console.log(`${colors.fg_red}｜[4] Salir${colors.reset}`);
-  console.log(`${colors.fg_cyan} ﹂⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻${colors.reset}`);
-  console.log('');
-  rl.setPrompt(`Opción: `); // Establecer el texto de la casilla "Opción: "
-  rl.prompt(); // Mostrar la casilla "Opción:"
+console.clear(); // Limpiar la consola
+process.stdout.write(colors.bg.magenta); // Fondo del menú en magenta
+console.log(`${colors.fg.white}          Termux Discord Bot          ${colors.reset}`); // Banner centrado y destacado
+console.log('');
+console.log(`${colors.fg.green}Hecho por: Keiji821${colors.reset}`);
+console.log(`${colors.fg.cyan}「⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺」${colors.reset}`);
+console.log(`${colors.fg.green}｜[1] Iniciar bot${colors.reset}`);
+console.log(`${colors.fg.cyan}｜[2] Actualizar${colors.reset}`);
+console.log(`${colors.fg.yellow}｜[3] Instalar dependencias${colors.reset}`);
+console.log(`${colors.fg.red}｜[4] Salir${colors.reset}`);
+console.log(`${colors.fg.cyan} ﹂⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻${colors.reset}`);
+console.log('');
+rl.setPrompt(`Opción: `); // Establecer el texto de la casilla "Opción: "
+rl.prompt(); // Mostrar la casilla "Opción:"
 };
 
 showMenu(); // Mostrar el menú principal al inicio
