@@ -45,7 +45,7 @@ italic: '[3m',
 
 //Función para mostrar mensaje de inicio
 const startupMessage = () => {
-console.log(`${colors.fg.green}${decorations.bold}El bot ${client.user.tag.toLocaleString()} se ha conectado correctamente! [OK]${colors.reset}`);
+console.log('[32mEl bot ' + client.user.tag + ' se ha conectado correctamente! [OK][0m');
 };
 
 // Función para establecer el estado del bot
