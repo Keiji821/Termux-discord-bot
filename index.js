@@ -171,22 +171,21 @@ console.error(`[31mError al instalar dependencias: ${error}[0m`);
 }
 };
 
-const chalk = require('chalk');
-
 const showMenu = () => {
-console.clear(); // Limpiar la consola
-console.log(chalk.hex('#7289DA').bgHex('#7289DA')('          Termux Discord Bot          ')); // Banner centrado y destacado
-console.log('');
-console.log(chalk.cyan('Hecho por: Keiji821'));
-console.log(chalk.cyan('「⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺」'));
-console.log(chalk.green('｜[1] Iniciar bot'));
-console.log(chalk.cyan('｜[2] Actualizar'));
-console.log(chalk.yellow('｜[3] Instalar dependencias'));
-console.log(chalk.red('｜[4] Salir'));
-console.log(chalk.cyan(' ﹂⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻'));
-console.log('');
-rl.setPrompt(`Opción: `); // Establecer el texto de la casilla "Opción: "
-rl.prompt(); // Mostrar la casilla "Opción:"
+  console.clear(); // Limpiar la consola
+  process.stdout.write(colors.bg_RGB(35, 40, 40)); // Fondo del menú en el color del Discord Nitro Boost
+  console.log(`${colors.fg_RGB(255, 255, 255)}          Termux Discord Bot          ${colors.reset}`); // Banner centrado y destacado
+  console.log('');
+  console.log(`${colors.fg_green}Hecho por: Keiji821${colors.reset}`);
+  console.log(`${colors.fg_cyan}「⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺」${colors.reset}`);
+  console.log(`${colors.fg_green}｜[1] Iniciar bot${colors.reset}`);
+  console.log(`${colors.fg_cyan}｜[2] Actualizar${colors.reset}`);
+  console.log(`${colors.fg_yellow}｜[3] Instalar dependencias${colors.reset}`);
+  console.log(`${colors.fg_red}｜[4] Salir${colors.reset}`);
+  console.log(`${colors.fg_cyan} ﹂⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻${colors.reset}`);
+  console.log('');
+  rl.setPrompt(`Opción: `); // Establecer el texto de la casilla "Opción: "
+  rl.prompt(); // Mostrar la casilla "Opción:"
 };
 
 showMenu(); // Mostrar el menú principal al inicio
