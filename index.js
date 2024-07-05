@@ -81,7 +81,7 @@ const folders = [
 ];
 
 for (const folder of folders) {
-console.log(`${colors.fg.cyan}${decorations.italic}Buscando comando ${commandName} en carpeta ${folder}${colors.reset}`);
+console.log('[36m[3mBuscando comando ' + commandName + ' en carpeta ' + folder + '[0m');
 const folderPath = `./comandos/${folder}/${commandName}.js`;
 if (fs.existsSync(folderPath)) {
 commandFile = folderPath;
@@ -91,7 +91,7 @@ break;
 
 // Si no se encuentra en ninguna carpeta, búsqueda en la carpeta raíz
 if (!commandFile) {
-console.log(`${colors.fg.cyan}${decorations.italic}Buscando comando ${commandName} en la carpeta raíz${colors.reset}`);
+console.log('[36m[3mBuscando comando ' + commandName + ' en la carpeta raíz[0m');
 const rootPath = `./comandos/${commandName}.js`;
 if (fs.existsSync(rootPath)) {
 commandFile = rootPath;
@@ -99,19 +99,19 @@ commandFile = rootPath;
 }
 
 if (!commandFile) {
-console.log(`${colors.fg.red}${decorations.bold}Comando no encontrado: ${commandName}${colors.reset}`);
+console.log('[31m[1mComando no encontrado: ' + commandName + '[0m');
 return;
 }
 
 const command = require(commandFile);
 if (!command.execute) {
-console.log(`${colors.fg.yellow}${decorations.bold}El comando ${commandName} no tiene una función execute${colors.reset}`);
+console.log('[33m[1mEl comando ' + commandName + ' no tiene una función execute[0m');
 return;
 }
 
 await command.execute(message, args, client, message.content.startsWith(prefix)? prefix : '');
 } catch (error) {
-console.error(`${colors.fg.red}${decorations.bold}Error al ejecutar comando: ${error}${colors.reset}`);
+console.error('[31m[1mError al ejecutar comando: ' + error + '[0m');
 message.reply(`Error al ejecutar comando: ${error}`);
 }
 };
