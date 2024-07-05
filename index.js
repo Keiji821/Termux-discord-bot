@@ -171,18 +171,19 @@ console.error(`[31mError al instalar dependencias: ${error}[0m`);
 }
 };
 
+const chalk = require('chalk');
+
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú en el color del Discord Nitro Boost
-console.log(`[44m[30m          Termux Discord Bot          [0m`); // Banner centrado y destacado
+console.log(chalk.hex('#7289DA').bgHex('#7289DA')('          Termux Discord Bot          ')); // Banner centrado y destacado
 console.log('');
-console.log(`[34mHecho por: Keiji821 [0m`);
-console.log(`[34m「⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m`);
-console.log(`[35m｜[1] Iniciar bot[0m`);
-console.log(`[36m｜[2] Actualizar[0m`);
-console.log(`[37m｜[3] Instalar dependencias[0m`);
-console.log(`[31m｜[4] Salir[0m`);
-console.log(`[34m ﹂⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻[0m`);
+console.log(chalk.cyan('Hecho por: Keiji821'));
+console.log(chalk.cyan('「⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺」'));
+console.log(chalk.green('｜[1] Iniciar bot'));
+console.log(chalk.cyan('｜[2] Actualizar'));
+console.log(chalk.yellow('｜[3] Instalar dependencias'));
+console.log(chalk.red('｜[4] Salir'));
+console.log(chalk.cyan(' ﹂⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻'));
 console.log('');
 rl.setPrompt(`Opción: `); // Establecer el texto de la casilla "Opción: "
 rl.prompt(); // Mostrar la casilla "Opción:"
