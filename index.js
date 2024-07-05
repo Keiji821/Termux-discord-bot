@@ -170,22 +170,16 @@ console.error(`[31mError al instalar dependencias: ${error}[0m`);
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-process.stdout.write(`${colors.bg.magenta}${colors.fg.white}          Termux Discord Bot          ${colors.reset}
-`);
-process.stdout.write(`${colors.fg.green}Hecho por: Keiji821${colors.reset}
-`);
-process.stdout.write(`${colors.fg.cyan}「⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺${colors.reset}
-`);
-process.stdout.write(`${colors.fg.green}｜[1] Iniciar bot${colors.reset}
-`);
-process.stdout.write(`${colors.fg.cyan}｜[2] Actualizar${colors.reset}
-`);
-process.stdout.write(`${colors.fg.yellow}｜[3] Instalar dependencias${colors.reset}
-`);
-process.stdout.write(`${colors.fg.red}｜[4] Salir${colors.reset}
-`);
-process.stdout.write(`${colors.fg.cyan} ﹂⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻${colors.reset}
-`);
+console.log(`${colors.bg.magenta}${colors.fg.white}
+          Termux Discord Bot          
+${colors.reset}`);
+console.log(`${colors.fg.green}Hecho por: Keiji821${colors.reset}`);
+console.log(`${colors.fg.cyan}「⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺」${colors.reset}`);
+console.log(`${colors.fg-green}｜[1] Iniciar bot${colors.reset}`);
+console.log(`${colors.fg-cyan}｜[2] Actualizar${colors.reset}`);
+console.log(`${colors.fg-yellow}｜[3] Instalar dependencias${colors.reset}`);
+console.log(`${colors.fg-red}｜[4] Salir${colors.reset}`);
+console.log(`${colors.fg-cyan} ﹂⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻${colors.reset}`);
 rl.setPrompt(`Opción: `); // Establecer el texto de la casilla "Opción: "
 rl.prompt(); // Mostrar la casilla "Opción:"
 };
