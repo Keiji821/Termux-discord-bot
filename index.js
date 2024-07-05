@@ -43,10 +43,9 @@ bold: '[1m',
 italic: '[3m',
 };
 
-
-// Función para mostrar mensaje de inicio
+//Función para mostrar mensaje de inicio
 const startupMessage = () => {
-console.log(`${colors.fg.green}${decorations.bold}El bot ${client.user.tag} se ha conectado correctamente!${colors.reset}`);
+  console.log(`${colors.fg.green}${decorations.bold}El bot ${client.user.tag} se ha conectado correctamente! ✅${colors.reset}`);
 };
 
 // Función para establecer el estado del bot
