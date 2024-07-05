@@ -135,8 +135,6 @@ console.log(`${colors.fg.red}${decorations.bold}El bot ${client.user.tag} se ha 
 
 const { exec } = require('child_process');
 
-process.stdout.write(`[48;2;35;40;40m`); // Fondo del menú
-
 const rl = readline.createInterface({
 input: process.stdin,
 output: process.stdout
