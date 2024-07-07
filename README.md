@@ -22,6 +22,7 @@ Ahora instala el repositorio en tu terminal de termux y ejecutalo.
 
 `node index.js`
 
-`🍁 
-`
+
+🍁
+`                                        `
 
