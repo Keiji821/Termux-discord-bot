@@ -1,3 +1,4 @@
+![cb74f2d997e27f4b714bfd38ecdc3ccd](https://github.com/Keiji821/Termux-discord-bot/assets/127261198/4562f9fc-72ab-46f4-bfe8-b5aa454a8d2a)
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.svg?v=103)](https://opensource.org/licenses/GPL-3.0/) [![Javascript](https://badges.frapsoft.com/javascript/code/javascript.svg?v=101)](https://github.com/ellerbrock/javascript-badges/)
 
 **Termux Discord Bot**
