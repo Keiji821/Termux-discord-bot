@@ -156,7 +156,7 @@ console.error(`[31mError al actualizar código: ${error}[0m`);
 const installDependencies = async () => {
 try {
 console.log(`[32mInstalando dependencias...[0m`);
-await exec('npm install');
+await exec('npm install discord.js');
 console.log(`[32mDependencias instaladas correctamente![0m`);
 console.clear(); // Limpiar la consola
 showMenu(); // Volver a mostrar el menú principal
