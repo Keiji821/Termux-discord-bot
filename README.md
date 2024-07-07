@@ -2,7 +2,7 @@
 
 **Termux Discord Bot**
 
---Este es mi primer repositorio en github, es un Bot de Discord qué se puede encender desde termux con una interfaz, trae algunos comandos los cuales seguiré agregando con el paso del tiempo, puedes usar y modificar este repositorio o código como quieras, puedes ver los comandos que tiene el bot entre los archivos del repositorio y así como también puedes ir creando las carpetas que faltan, con el tiempo iré agregando más comandos y mejorando el repositorio.--
+>>> Este es mi primer repositorio en github, es un Bot de Discord qué se puede encender desde termux con una interfaz, trae algunos comandos los cuales seguiré agregando con el paso del tiempo, puedes usar y modificar este repositorio o código como quieras, puedes ver los comandos que tiene el bot entre los archivos del repositorio y así como también puedes ir creando las carpetas que faltan, con el tiempo iré agregando más comandos y mejorando el repositorio.
 
 **Instala las dependencias**
 
