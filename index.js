@@ -238,7 +238,7 @@ installDependencies();
 showMenu(); // Volver a mostrar el menú principal
 break;
 case '4':
-console.log('Saliendo...");
+console.log('Saliendo...');
 process.exit();
 break;
 case '5':
