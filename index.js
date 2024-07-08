@@ -134,51 +134,76 @@ console.log(`${colors.fg.red}${decorations.bold}El bot ${client.user.tag} se ha 
 
 
 const { exec } = require('child_process');
-
-const rl = readline.createInterface({
+const rl = require('readline').createInterface({
 input: process.stdin,
 output: process.stdout
 });
 
 const updateCode = async () => {
 try {
-console.log(`[32mActualizando código...[0m`);
+console.log(`[32mActualizando código...[0m`);
 await exec('git pull origin main');
-console.log(`[32mCódigo actualizado correctamente![0m`);
+console.log(`[32mCódigo actualizado correctamente![0m`);
 await exec('node index.js'); // Ejecutar el archivo index.js nuevamente
 console.clear(); // Limpiar la consola
 showMenu(); // Volver a mostrar el menú principal
 } catch (error) {
-console.error(`[31mError al actualizar código: ${error}[0m`);
+console.error(`[31mError al actualizar código: ${error}[0m`);
 }
 };
 
 const installDependencies = async () => {
 try {
-console.log(`[32mInstalando dependencias...[0m`);
+console.log(`[32mInstalando dependencias...[0m`);
 await exec('npm install discord.js');
-console.log(`[32mDependencias instaladas correctamente![0m`);
+console.log(`[32mDependencias instaladas correctamente![0m`);
 console.clear(); // Limpiar la consola
 showMenu(); // Volver a mostrar el menú principal
 } catch (error) {
-console.error(`[31mError al instalar dependencias: ${error}[0m`);
+console.error(`[31mError al instalar dependencias: ${error}[0m`);
 }
+};
+
+const restartBot = async () => {
+try {
+console.log(`[32mReiniciando bot...[0m`);
+await exec('node index.js'); // Ejecutar el archivo index.js nuevamente
+console.clear(); // Limpiar la consola
+showMenu(); // Volver a mostrar el menú principal
+} catch (error) {
+console.error(`[31mError al reiniciar bot: ${error}[0m`);
+}
+};
+
+const showVersion = () => {
+console.log(`[32mVersion: 1.0[0m`);
+console.clear(); // Limpiar la consola
+showMenu(); // Volver a mostrar el menú principal
+};
+
+const showWelcomeMessage = () => {
+console.log(`[32mBienvenido al Termux Discord Bot![0m`);
+console.log(`[33mDesarrollado por Keiji821[0m`);
+console.log(`[36m⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃[0m`);
 };
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-console.log('[31m[1m       Termux Discord Bot          [0m');
-console.log('[32m🍁 Hecho por: Keiji821[0m');
-console.log('[36m⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃[0m');
-console.log('[32m▏[1] Iniciar bot             ︳[0m');
-console.log('[36m▏[2] Actualizar              ︳[0m');
-console.log('[33m▏[3] Instalar dependencias   ︳[0m');
-console.log('[31m▏[4] Salir                   ︳[0m');
-console.log('[36m⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍[0m');
-rl.setPrompt(`[34m[1m 🍥➤ `); // Establecer el texto de la casilla "Opción: "
+showWelcomeMessage();
+console.log('[32m unfamiliar with Termux?[0m');
+console.log('[36mBeginners Guide: <https://example.com>[0m');
+console.log('[32m1. Iniciar bot[0m');
+console.log('[36m2. Actualizar código[0m');
+console.log('[33m3. Instalar dependencias[0m');
+console.log('[31m4. Salir[0m');
+console.log('[36m5. Reiniciar bot[0m');
+console.log('[32m6. Mostrar versión[0m');
+console.log('[36m⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍[0m');
+rl.setPrompt(`[34m[1m ➤ `); // Establecer el texto de la casilla "Opción: "
 rl.prompt(); // Mostrar la casilla "Opción:"
 };
 
+showWelcomeMessage(); // Mostrar mensaje de bienvenida
 showMenu(); // Mostrar el menú principal al inicio
 
 rl.on('line', (option) => {
@@ -213,8 +238,16 @@ installDependencies();
 showMenu(); // Volver a mostrar el menú principal
 break;
 case '4':
-console.log(' Saliendo...');
+console.log(' Saliendo...");
 process.exit();
+break;
+case '5':
+restartBot();
+showMenu(); // Volver a mostrar el menú principal
+break;
+case '6':
+showVersion();
+showMenu(); // Volver a mostrar el menú principal
 break;
 default:
 console.log(' Opción inválida');
