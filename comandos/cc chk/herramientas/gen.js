@@ -30,7 +30,7 @@ const json = response.data;
 const bank = json.bank? json.bank.name : "Desconocido";
 const country = json.country? json.country.name : "Desconocido";
 
-generateCards(year, month, bin, ccv, bank, country, message);
+generateCards(year, month, bin, bank, country, message);
 })
 .catch(error => {
 console.error('Error al obtener datos de la API:', error);
@@ -55,7 +55,7 @@ Format: "PIPE"
 const cards = res.split("|"); // Divide la cadena en un array de tarjetas
 
 if (cards.length > 0) {
-const cardEmbed = new Discord.EmbedBuilder()
+const cardEmbed = new Discord EmbedBuilder()
 .setTitle("Tarjetas de Crédito Generadas");
 
 let fields = [];
