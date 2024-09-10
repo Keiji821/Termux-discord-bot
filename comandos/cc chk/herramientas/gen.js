@@ -37,8 +37,7 @@ if (country) {
 cardEmbed.addFields({ name: "País", value: country, inline: true });
 }
 
-.setDescription(cards.join("
-"))
+.setDescription(cards.join(", "))
 .setColor("#0099ff");
 
 message.channel.send({ embeds: [cardEmbed] });
