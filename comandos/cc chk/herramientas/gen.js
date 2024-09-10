@@ -39,10 +39,10 @@ País: ${country}
     });
 
     const cardEmbed = new Discord.EmbedBuilder()
-     .setTitle("Tarjetas de Crédito Generadas")
-     .setDescription(cards.join("
+.setTitle("Tarjetas de Crédito Generadas")
+.setDescription(cards.join("
 "))
-     .setColor("#0099ff");
+.setColor("#0099ff");
 
     message.channel.send({ embeds: [cardEmbed] });
   })
