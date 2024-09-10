@@ -39,6 +39,7 @@ message.channel.send('Error al generar tarjetas de crédito. Intente nuevamente 
 }
 };
 
+
 function generateCards(year, month, bin, bank, country, message) {
 const namso = require('namso-cc-gen');
 const res = namso.gen({
@@ -55,7 +56,7 @@ Format: "PIPE"
 const cards = res.split("|"); // Divide la cadena en un array de tarjetas
 
 if (cards.length > 0) {
-const cardEmbed = new Discord.EmbedBuilder() // Agregar Discord. antes de EmbedBuilder
+const cardEmbed = new Discord.EmbedBuilder() 
 .setTitle("Tarjetas de Crédito Generadas");
 
 let fields = [];
@@ -72,7 +73,8 @@ const ccvGenerated = getRandomCCV(); // Generar CCV aleatoriamente
 const cardDescription = cards.map(card => {
 return `${card} | CCV: ${ccvGenerated}`;
 }).join("
-");
+"); // Cambiar join("/") por join("
+")
 
 cardEmbed.addFields(fields);
 cardEmbed.setDescription(cardDescription);
