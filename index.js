@@ -83,6 +83,7 @@ const folders = [
 'seguridad',
 'moderación',
 'administración',
+'cc chk',
 ];
 
 for (const folder of folders) {
