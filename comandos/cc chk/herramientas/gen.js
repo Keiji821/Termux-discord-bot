@@ -6,10 +6,6 @@ name: 'gen',
 description: 'Genera tarjetas de crédito aleatorias',
 execute(message, args, client) {
 const bin = args[0];
-const month = args[1];
-const year = args[2];
-const ccv = args[3];
-
 axios.get(`https://binchk-api.vercel.app/bin=${bin}`)
 .then(response => {
 const json = response.data;
@@ -21,31 +17,28 @@ let res = namso.gen({
 ShowCCV: true,
 ShowExpDate: true,
 ShowBank: false,
-Month: month,
-Year: year,
+Month: "01",
+Year: "2022",
 Quantity: "10", // Generar 10 tarjetas
 Bin: bin,
-Format: "PIPE",
-CCV: ccv
+Format: "PIPE"
 });
 
-let cards = res.split("|");
-let cardList = [];
+let cards = res.split("|"); // Divide la cadena en un array de tarjetas
 
-for (let i = 0; i < cards.length; i += 4) {
-cardList.push(`**Tarjeta ${i / 4 + 1}**
-Número de tarjeta: ${cards[i]}
-Fecha de expiración: ${cards[i + 1]}/${cards[i + 2]}
-CCV: ${cards[i + 3]}`);
-}
-
+if (cards.length > 0) {
 const cardEmbed = new Discord.EmbedBuilder()
 .setTitle("Tarjetas de Crédito Generadas")
-.setDescription(cardList.join("
+.addField("Banco", bank, true)
+.addField("País", country, true)
+.setDescription(cards.join("
 "))
 .setColor("#0099ff");
 
 message.channel.send({ embeds: [cardEmbed] });
+} else {
+message.channel.send("No se pudieron generar las tarjetas de crédito.");
+}
 })
 .catch(error => {
 console.error(error);
