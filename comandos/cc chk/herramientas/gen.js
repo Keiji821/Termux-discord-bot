@@ -39,23 +39,6 @@ message.channel.send('Error al generar tarjetas de crédito. Intente nuevamente 
 }
 };
 
-function getRandomBin() {
-const bin = Math.floor(Math.random() * 9000000000000000) + 4000000000000000;
-return bin.toString().substr(0, 16);
-}
-
-function getRandomYear() {
-return Math.floor(Math.random() * 10) + 2022;
-}
-
-function getRandomMonth() {
-return Math.floor(Math.random() * 12) + 1;
-}
-
-function getRandomCCV() {
-return Math.floor(Math.random() * 900) + 100;
-}
-
 function generateCards(year, month, bin, ccv, bank, country, message) {
 const namso = require('namso-cc-gen');
 const res = namso.gen({
@@ -84,8 +67,16 @@ if (country) {
 fields.push({ name: "País", value: country, inline: true });
 }
 
-cardEmbed.addFields(fields);
-cardEmbed.setDescription(cards.join("|"));
+// Generar CCV aleatoriamente
+const ccvGenerated = getRandomCCV();
+
+// Agregar CCV a la descripción de la tarjeta
+const cardDescription = cards.map(card => {
+return `${card} | CCV: ${ccvGenerated}`;
+}).join("
+");
+
+cardEmbed.setDescription(cardDescription);
 cardEmbed.setColor("#0099ff");
 
 message.channel.send({ embeds: [cardEmbed] });
