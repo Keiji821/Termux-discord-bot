@@ -30,18 +30,18 @@ CCV: ccv
 });
 
 let cards = res.split("|");
+let cardList = [];
+
+for (let i = 0; i < cards.length; i += 4) {
+cardList.push(`**Tarjeta ${i / 4 + 1}**
+Número de tarjeta: ${cards[i]}
+Fecha de expiración: ${cards[i + 1]}/${cards[i + 2]}
+CCV: ${cards[i + 3]}`);
+}
 
 const cardEmbed = new Discord.EmbedBuilder()
 .setTitle("Tarjetas de Crédito Generadas")
-.addField("Banco", bank, true)
-.addField("País", country, true)
-.setDescription(cards.map((card, index) => {
-return `**Tarjeta ${index + 1}**
-Número de tarjeta: ${card}
-Fecha de expiración: ${month}/${year}
-CCV: ${ccv}`;
-}).join("
-
+.setDescription(cardList.join("
 "))
 .setColor("#0099ff");
 
