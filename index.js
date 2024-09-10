@@ -4,6 +4,11 @@ let prefixInput = ''; // Declarar variable para el prefijo
 const fs = require('fs');
 const readline = require('readline');
 const git = require('simple-git')();
+var figlet = require("figlet");
+const lolcatjs = require('lolcatjs');
+
+lolcatjs.options.seed = Math.round(Math.random() * 1000);
+lolcatjs.options.colors = true;
 
 // Configuración de colores y decoraciones para la consola
 const colors = {
@@ -166,15 +171,25 @@ console.error(`[31mError al instalar dependencias: ${error}[0m`);
 };
 
 const showMenu = () => {
-console.clear(); // Limpiar la consola
-console.log('[31m[1m       Termux Discord Bot          [0m');
-console.log('[32m🍁 Hecho por: Keiji821[0m');
-console.log('[36m⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃[0m');
-console.log('[32m▏[1] Iniciar bot             ︳[0m');
-console.log('[36m▏[2] Actualizar              ︳[0m');
-console.log('[33m▏[3] Instalar dependencias   ︳[0m');
-console.log('[31m▏[4] Salir                   ︳[0m');
-console.log('[36m⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍[0m');
+  console.clear();
+
+lolcatjs.fromString(
+  figlet.textSync("Discord Bot", {
+    font: "Standard",
+    horizontalLayout: "default",
+    verticalLayout: "default",
+    width: 80,
+    whitespaceBreak: true,
+  })
+);
+
+lolcatjs.fromString('🍁 Hecho por: Keiji821');
+lolcatjs.fromString('⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
+lolcatjs.fromString('▏[1] Iniciar bot             ︳[0m');
+lolcatjs.fromString('▏[2] Actualizar              ︳[0m');
+lolcatjs.fromString('▏[3] Instalar dependencias   ︳[0m');
+lolcatjs.fromString('▏[4] Salir                   ︳[0m');
+lolcatjs.fromString('⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
 rl.setPrompt(`[34m[1m 🍥➤ `); // Establecer el texto de la casilla "Opción: "
 rl.prompt(); // Mostrar la casilla "Opción:"
 };
