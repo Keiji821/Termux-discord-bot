@@ -55,7 +55,7 @@ Format: "PIPE"
 const cards = res.split("|"); // Divide la cadena en un array de tarjetas
 
 if (cards.length > 0) {
-const cardEmbed = new Discord EmbedBuilder()
+const cardEmbed = new Discord.EmbedBuilder() // Agregar Discord. antes de EmbedBuilder
 .setTitle("Tarjetas de Crédito Generadas");
 
 let fields = [];
