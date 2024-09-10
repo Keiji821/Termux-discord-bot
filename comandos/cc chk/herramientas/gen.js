@@ -12,8 +12,8 @@ let bin, year, month, ccv;
 
 if (parts.length === 1) {
 bin = parts[0];
-year = '2022';
-month = '01';
+year = '2024';
+month = '12';
 ccv = 'rnd';
 } else if (parts.length === 4) {
 bin = parts[0];
