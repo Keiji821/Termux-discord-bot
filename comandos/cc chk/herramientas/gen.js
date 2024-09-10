@@ -11,15 +11,15 @@ const parts = input.split('|');
 let bin, year, month, ccv;
 
 if (parts.length === 1) {
-bin = parts[0];
-year = '2024';
-month = '12';
-ccv = 'rnd';
+bin = getRandomBin();
+year = getRandomYear();
+month = getRandomMonth();
+ccv = getRandomCCV();
 } else if (parts.length === 4) {
 bin = parts[0];
-year = parts[2];
-month = parts[1];
-ccv = parts[3];
+year = parts[2] === 'rnd' || parts[2] === 'xxx'? getRandomYear() : parts[2];
+month = parts[1] === 'rnd' || parts[1] === 'xxx'? getRandomMonth() : parts[1];
+ccv = parts[3] === 'rnd' || parts[3] === 'xxx'? getRandomCCV() : parts[3];
 } else {
 return message.channel.send('Error: Formato de entrada incorrecto. Uso:,gen <bin> o,gen <bin>|<mes>|<año>|<ccv>');
 }
@@ -38,6 +38,23 @@ message.channel.send('Error al generar tarjetas de crédito. Intente nuevamente 
 });
 }
 };
+
+function getRandomBin() {
+const bin = Math.floor(Math.random() * 9000000000000000) + 4000000000000000;
+return bin.toString().substr(0, 16);
+}
+
+function getRandomYear() {
+return Math.floor(Math.random() * 10) + 2022;
+}
+
+function getRandomMonth() {
+return Math.floor(Math.random() * 12) + 1;
+}
+
+function getRandomCCV() {
+return Math.floor(Math.random() * 900) + 100;
+}
 
 function generateCards(year, month, bin, ccv, bank, country, message) {
 const namso = require('namso-cc-gen');
