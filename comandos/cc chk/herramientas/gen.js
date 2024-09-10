@@ -24,8 +24,9 @@ axios.get(`https://binchk-api.vercel.app/bin=${bin}`)
       Format: "PIPE"
     });
 
-    const cards = res.cards.map((card, index) => {
-      return `**Tarjeta ${index + 1}**
+
+  if (res && res.cards && Array.isArray(res.cards)) {
+  const cards = res.cards.map((card, index) => {    return `**Tarjeta ${index + 1}**
 
 Número de tarjeta: ${card.number}
 
@@ -37,6 +38,11 @@ Banco: ${bank}
 País: ${country}
 `;
     });
+
+  });
+} else {
+  console.error('No se pudo generar las tarjetas');
+}
 
     const cardEmbed = new Discord.EmbedBuilder()
 .setTitle("Tarjetas de Crédito Generadas")
