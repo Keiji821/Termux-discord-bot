@@ -88,7 +88,7 @@ const folders = [
 
 for (const folder of folders) {
 if (folder === 'cc chk') {
-console.log('[36mBuscando comando ' + commandName + ' en carpeta ' + folder + '/herramientas' + '[0m');
+console.log('[36mBuscando comando ' + commandName + ' en carpeta ' + folder + '/herramientas[0m');
 const folderPath = `./comandos/${folder}/herramientas/${commandName}.js`;
 if (fs.existsSync(folderPath)) {
 commandFile = folderPath;
