@@ -30,12 +30,16 @@ if (cards.length > 0) {
 const cardEmbed = new Discord.EmbedBuilder()
 .setTitle("Tarjetas de Crédito Generadas");
 
+let fields = [];
+
 if (bank) {
-cardEmbed.addFields({ name: "Banco", value: bank, inline: true });
+fields.push({ name: "Banco", value: bank, inline: true });
 }
 if (country) {
-cardEmbed.addFields({ name: "País", value: country, inline: true });
+fields.push({ name: "País", value: country, inline: true });
 }
+
+cardEmbed.addFields(fields);
 
 .setDescription(cards.join(", "))
 .setColor("#0099ff");
