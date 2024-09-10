@@ -44,15 +44,13 @@ País: ${country}
 console.error('No se pudo generar las tarjetas');
 }
 
+if (cards.length > 0) {
 const cardEmbed = new Discord.EmbedBuilder()
 .setTitle("Tarjetas de Crédito Generadas")
 .setDescription(cards.join(", "))
 .setColor("#0099ff");
 
 message.channel.send({ embeds: [cardEmbed] });
-})
-.catch(error => {
-console.error(error);
-});
+} else {
+message.channel.send("No se pudieron generar las tarjetas de crédito.");
 }
-};
