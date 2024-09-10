@@ -29,8 +29,10 @@ let cards = res.split("|"); // Divide la cadena en un array de tarjetas
 if (cards.length > 0) {
 const cardEmbed = new Discord.EmbedBuilder()
 .setTitle("Tarjetas de Crédito Generadas")
-.addField("Banco", bank, true)
-.addField("País", country, true)
+.addFields([
+{ name: "Banco", value: bank, inline: true },
+{ name: "País", value: country, inline: true },
+])
 .setDescription(cards.join(", "))
 .setColor("#0099ff");
 
