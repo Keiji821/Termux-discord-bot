@@ -28,7 +28,7 @@ let cards = res.split("|"); // Divide la cadena en un array de tarjetas
 
 if (cards.length > 0) {
 const cardEmbed = new Discord.EmbedBuilder()
-.setTitle("Tarjetas de Crédito Generadas");
+.setTitle("Tarjetas de Crédito Generadas")
 
 let fields = [];
 
@@ -39,10 +39,10 @@ if (country) {
 fields.push({ name: "País", value: country, inline: true });
 }
 
-cardEmbed.addFields(fields);
+cardEmbed.addFields(fields)
 
-.setDescription(cards.join(", "))
-.setColor("#0099ff");
+cardEmbed.setDescription(cards.join(", "))
+cardEmbed.setColor("#0099ff");
 
 message.channel.send({ embeds: [cardEmbed] });
 } else {
