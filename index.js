@@ -87,6 +87,14 @@ const folders = [
 ];
 
 for (const folder of folders) {
+if (folder === 'cc chk') {
+console.log('[36mBuscando comando ' + commandName + ' en carpeta ' + folder + '/herramientas' + '[0m');
+const folderPath = `./comandos/${folder}/herramientas/${commandName}.js`;
+if (fs.existsSync(folderPath)) {
+commandFile = folderPath;
+break;
+}
+} else {
 console.log('[36mBuscando comando ' + commandName + ' en carpeta ' + folder + '[0m');
 const folderPath = `./comandos/${folder}/${commandName}.js`;
 if (fs.existsSync(folderPath)) {
@@ -94,6 +102,8 @@ commandFile = folderPath;
 break;
 }
 }
+}
+
 
 // Si no se encuentra en ninguna carpeta, búsqueda en la carpeta raíz
 if (!commandFile) {
