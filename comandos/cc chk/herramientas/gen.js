@@ -39,7 +39,7 @@ message.channel.send('Error al generar tarjetas de crédito. Intente nuevamente 
 }
 };
 
-function generateCards(year, month, bin, ccv, bank, country, message) {
+function generateCards(year, month, bin, bank, country, message) {
 const namso = require('namso-cc-gen');
 const res = namso.gen({
 ShowCCV: true,
@@ -67,15 +67,14 @@ if (country) {
 fields.push({ name: "País", value: country, inline: true });
 }
 
-// Generar CCV aleatoriamente
-const ccvGenerated = getRandomCCV();
+const ccvGenerated = getRandomCCV(); // Generar CCV aleatoriamente
 
-// Agregar CCV a la descripción de la tarjeta
 const cardDescription = cards.map(card => {
 return `${card} | CCV: ${ccvGenerated}`;
 }).join("
 ");
 
+cardEmbed.addFields(fields);
 cardEmbed.setDescription(cardDescription);
 cardEmbed.setColor("#0099ff");
 
