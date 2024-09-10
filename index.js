@@ -174,7 +174,7 @@ const showMenu = () => {
   console.clear();
 
 lolcatjs.fromString(
-  figlet.textSync("[1m Discord Bot", {
+  figlet.textSync("Bot", {
     font: "Standard",
     horizontalLayout: "default",
     verticalLayout: "default",
