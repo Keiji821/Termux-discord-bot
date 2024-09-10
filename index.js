@@ -185,10 +185,10 @@ lolcatjs.fromString(
 
 lolcatjs.fromString('Hecho por: Keiji821');
 lolcatjs.fromString('⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
-lolcatjs.fromString('▏[1] Iniciar bot             ︳[0m');
-lolcatjs.fromString('▏[2] Actualizar              ︳[0m');
-lolcatjs.fromString('▏[3] Instalar dependencias   ︳[0m');
-lolcatjs.fromString('▏[4] Salir                   ︳[0m');
+lolcatjs.fromString('▏[1] Iniciar bot             ︳');
+lolcatjs.fromString('▏[2] Actualizar              ︳');
+lolcatjs.fromString('▏[3] Instalar dependencias   ︳');
+lolcatjs.fromString('▏[4] Salir                   ︳');
 lolcatjs.fromString('⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
 rl.setPrompt(`[34m[1m 🍥➤ `); // Establecer el texto de la casilla "Opción: "
 rl.prompt(); // Mostrar la casilla "Opción:"
