@@ -40,8 +40,7 @@ País: ${country}
 
     const cardEmbed = new Discord.EmbedBuilder()
 .setTitle("Tarjetas de Crédito Generadas")
-.setDescription(cards.join("
-"))
+.setDescription(cards.join(", "))
 .setColor("#0099ff");
 
     message.channel.send({ embeds: [cardEmbed] });
