@@ -6,6 +6,9 @@ name: 'gen',
 description: 'Genera tarjetas de crédito aleatorias',
 execute(message, args, client) {
 const bin = args[0];
+const año = args[1];
+const mes = args[2];
+const ccv = args[3];
 axios.get(`https://binchk-api.vercel.app/bin=${bin}`)
 .then(response => {
 const json = response.data;
@@ -17,9 +20,9 @@ let res = namso.gen({
 ShowCCV: true,
 ShowExpDate: true,
 ShowBank: false,
-Month: "01",
-Year: "2022",
-Quantity: "10", // Generar 10 tarjetas
+Month: mes,
+Year: año,
+Quantity: "10",
 Bin: bin,
 Format: "PIPE"
 });
