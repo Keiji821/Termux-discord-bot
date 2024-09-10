@@ -24,7 +24,7 @@ axios.get(`https://binchk-api.vercel.app/bin=${bin}`)
       Format: "PIPE"
     });
 
-    const cards = res.map((card, index) => {
+    const cards = res.cards.map((card, index) => {
       return `**Tarjeta ${index + 1}**
 
 Número de tarjeta: ${card.number}
