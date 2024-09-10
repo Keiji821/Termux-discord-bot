@@ -9,8 +9,8 @@ const bin = args[0];
 axios.get(`https://binchk-api.vercel.app/bin=${bin}`)
 .then(response => {
 const json = response.data;
-const bank = json.bank.name;
-const country = json.country.name;
+let bank = json.bank? json.bank.name : "Unknown";
+let country = json.country? json.country.name : "Unknown";
 
 const namso = require('namso-cc-gen');
 let res = namso.gen({
