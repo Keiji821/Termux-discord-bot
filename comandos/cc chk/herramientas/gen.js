@@ -73,8 +73,7 @@ const ccvGenerated = getRandomCCV(); // Generar CCV aleatoriamente
 const cardDescription = cards.map(card => {
 return `${card} | CCV: ${ccvGenerated}`;
 }).join("
-"); // Cambiar join("/") por join("
-")
+");
 
 cardEmbed.addFields(fields);
 cardEmbed.setDescription(cardDescription);
