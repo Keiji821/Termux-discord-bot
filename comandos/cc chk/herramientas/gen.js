@@ -9,8 +9,8 @@ const bin = args[0];
 axios.get(`https://binchk-api.vercel.app/bin=${bin}`)
 .then(response => {
 const json = response.data;
-let bank = json.bank? json.bank.name : "Unknown";
-let country = json.country? json.country.name : "Unknown";
+let bank = json.bank? json.bank.name : "Desconocido";
+let country = json.country? json.country.name : "Desconocido";
 
 const namso = require('namso-cc-gen');
 let res = namso.gen({
@@ -28,12 +28,17 @@ let cards = res.split("|"); // Divide la cadena en un array de tarjetas
 
 if (cards.length > 0) {
 const cardEmbed = new Discord.EmbedBuilder()
-.setTitle("Tarjetas de Crédito Generadas")
-.addFields([
-{ name: "Banco", value: bank, inline: true },
-{ name: "País", value: country, inline: true },
-])
-.setDescription(cards.join(", "))
+.setTitle("Tarjetas de Crédito Generadas");
+
+if (bank) {
+cardEmbed.addFields({ name: "Banco", value: bank, inline: true });
+}
+if (country) {
+cardEmbed.addFields({ name: "País", value: country, inline: true });
+}
+
+.setDescription(cards.join("
+"))
 .setColor("#0099ff");
 
 message.channel.send({ embeds: [cardEmbed] });
