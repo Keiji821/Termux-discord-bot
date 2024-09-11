@@ -1,6 +1,6 @@
-const { EmbedBuilder } = require('discord.js');
-const axios = require('axios');
-const namso = require('namso-cc-gen');
+const { EmbedBuilder } = require('discord.js'); 
+const axios = require('axios');  
+const namso = require('namso-cc-gen'); 
 
 module.exports = {
   name: 'gen',
@@ -26,27 +26,31 @@ module.exports = {
 
     // Verificación de BIN usando la API
     try {
-      const response = await axios.get(`https://binchk-api.vercel.app/bin/${bin}`);
+      const response = await axios.get(`https://binchk-api.vercel.app/bin=${bin}`);  // Cambié la barra por `=`
       const json = response.data;
-      
+
+      if (!json.status) {
+        throw new Error("No se encontraron datos para este BIN");
+      }
+
       // Datos del BIN
-      const bank = json.bank && json.bank.name ? json.bank.name : 'Desconocido';
-      const country = json.country && json.country.name ? json.country.name : 'Desconocido';
-      const currency = json.country && json.country.currency ? json.country.currency : 'Desconocido';
-      const emoji = json.country && json.country.emoji ? json.country.emoji : ''; 
+      const bank = json.bank || 'Desconocido';
+      const brand = json.brand || 'Desconocido';
+      const type = json.type || 'Desconocido';
+      const level = json.level || 'Desconocido';
+      const phone = json.phone || 'Desconocido';
 
       // Generar las tarjetas de crédito
-      generateCards(year, month, bin, bank, country, currency, emoji, message);
+      generateCards(year, month, bin, bank, brand, type, level, phone, message);
     } catch (error) {
-      console.error('Error al obtener datos de la API:', error);
+      console.error('Error al obtener datos de la API:', error.message);
       return message.channel.send('Error al generar tarjetas de crédito. Intente nuevamente más tarde.');
     }
   }
 };
 
 // Función para generar las tarjetas
-function generateCards(year, month, bin, bank, country, currency, emoji, message) {
-  // Generar tarjetas utilizando namso-cc-gen
+function generateCards(year, month, bin, bank, brand, type, level, phone, message) {
   const res = namso.gen({
     ShowCCV: true,
     ShowExpDate: true,
@@ -60,15 +64,14 @@ function generateCards(year, month, bin, bank, country, currency, emoji, message
 
   const cards = res.split("|");
 
-  // Si se generaron tarjetas correctamente
   if (cards.length > 0) {
     const cardEmbed = new EmbedBuilder()
       .setTitle('Generador de Tarjetas')
       .setColor('#0099ff')
       .addFields(
         { name: 'Formato', value: `${bin}|${month}|${year}`, inline: false },
-        { name: 'Datos del BIN', value: `💳 MASTERCARD - CREDIT - STANDARD`, inline: false },
-        { name: 'Datos del Banco', value: `🏦 ${bank} - ${emoji} ${country} - ${currency}`, inline: false }
+        { name: 'Datos del BIN', value: `💳 ${brand} - ${type} - ${level}`, inline: false },
+        { name: 'Datos del Banco', value: `🏦 ${bank} - Tel: ${phone}`, inline: false }
       );
 
     const cardDescription = cards.map(card => {
