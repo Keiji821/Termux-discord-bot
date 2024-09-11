@@ -10,7 +10,6 @@ const lolcatjs = require('lolcatjs');
 lolcatjs.options.seed = Math.round(Math.random() * 1000);
 lolcatjs.options.colors = true;
 
-// Configuración de colores y decoraciones para la consola
 const colors = {
 reset: '[0m',
 bright: '[1m',
@@ -41,24 +40,23 @@ white: '[47m',
 },
 };
 
-// Decoraciones adicionales
 const decorations = {
 underline: '[4m',
 bold: '[1m',
 italic: '[3m',
 };
 
-//Función para mostrar mensaje de inicio
+// Mostrar mensaje de inicio
 const startupMessage = () => {
-console.log('[32m🟢 El bot ' + client.user.tag + ' se ha conectado correctamente! [0m');
+console.log('[32m[1m [🟢] El bot ' + client.user.tag + ' se ha conectado correctamente! [0m');
 };
 
-// Función para establecer el estado del bot
+// Establecer el estado del bot
 const setStatus = (status) => {
 client.user.setPresence({ status });
 };
 
-// Función para establecer la actividad del bot
+// Establecer la actividad del bot
 const setActivity = (text) => {
 client.user.setActivity({ name: text, type: Discord.ActivityType.Playing });
 };
@@ -158,26 +156,26 @@ output: process.stdout
 
 const updateCode = async () => {
 try {
-console.log(`[32mActualizando código...[0m`);
+console.log(`[32m Actualizando código...[0m`);
 await exec('git pull origin main');
-console.log(`[32mCódigo actualizado correctamente![0m`);
-await exec('node index.js'); // Ejecutar el archivo index.js nuevamente
-console.clear(); // Limpiar la consola
-showMenu(); // Volver a mostrar el menú principal
+console.log(`[32m Código actualizado correctamente![0m`);
+await exec('node index.js');
+console.clear(); 
+showMenu(); 
 } catch (error) {
-console.error(`[31mError al actualizar código: ${error}[0m`);
+console.error(`[31m Error al actualizar código: ${error}[0m`);
 }
 };
 
 const installDependencies = async () => {
 try {
-console.log(`[32mInstalando dependencias...[0m`);
+console.log(`[32m[31m Instalando dependencias...[0m`);
 await exec('npm install discord.js');
-console.log(`[32mDependencias instaladas correctamente![0m`);
-console.clear(); // Limpiar la consola
-showMenu(); // Volver a mostrar el menú principal
+console.log(`[32m[31m Dependencias instaladas correctamente![0m`);
+console.clear();
+showMenu();
 } catch (error) {
-console.error(`[31mError al instalar dependencias: ${error}[0m`);
+console.error(`[31m[1m Error al instalar dependencias: ${error}[0m`);
 }
 };
 
@@ -202,11 +200,11 @@ lolcatjs.fromString('▏[2] Actualizar              ︳');
 lolcatjs.fromString('▏[3] Instalar dependencias   ︳');
 lolcatjs.fromString('▏[4] Salir                   ︳');
 lolcatjs.fromString('⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
-rl.setPrompt(`[34m[1m 🍥➤ `); // Establecer el texto de la casilla "Opción: "
-rl.prompt(); // Mostrar la casilla "Opción:"
+rl.setPrompt(`[34m[1m 🍥➤ `);
+rl.prompt(); 
 };
 
-showMenu(); // Mostrar el menú principal al inicio
+showMenu();
 
 rl.on('line', (option) => {
 switch (option.trim()) {
@@ -225,7 +223,7 @@ console.log('Prefix invalido');
 showMenu();
 } else {
 prefixInput = prefix;
-showMenu(); // Volver a mostrar el menú principal
+showMenu();
 }
 });
 }
@@ -233,11 +231,11 @@ showMenu(); // Volver a mostrar el menú principal
 break;
 case '2':
 updateCode();
-showMenu(); // Volver a mostrar el menú principal
+showMenu();
 break;
 case '3':
 installDependencies();
-showMenu(); // Volver a mostrar el menú principal
+showMenu();
 break;
 case '4':
 console.log(' Saliendo...');
@@ -245,8 +243,8 @@ process.exit();
 break;
 default:
 console.log(' Opción inválida');
-console.clear(); // Limpiar la consola
-showMenu(); // Volver a mostrar el menú principal
+console.clear();
+showMenu();
 }
 }).on('close', () => {
 process.exit();
