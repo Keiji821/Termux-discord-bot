@@ -198,14 +198,14 @@ whitespaceBreak: true,
 
 
 const borderChars = {
-topLeft: '+',
-topRight: '+',
-top: '-',
-left: '|',
-right: '|',
-bottomLeft: '+',
-bottomRight: '+',
-bottom: '-'
+  topLeft: '╭',
+  topRight: '╮',
+  top: '─',
+  left: '│',
+  right: '│',
+  bottomLeft: '╰',
+  bottomRight: '╯',
+  bottom: '─'
 };
 
 const gradientBackground = (text) => gradient('blue', 'purple')(text);
