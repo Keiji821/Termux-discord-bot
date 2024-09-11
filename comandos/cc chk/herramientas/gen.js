@@ -76,3 +76,22 @@ function generateCards(year, month, bin, bank, country, currency, emoji, message
     message.channel.send('No se pudieron generar las tarjetas de crédito.');
   }
 }
+
+// Funciones para generar valores aleatorios
+function getRandomMonth() {
+  // Genera un mes aleatorio entre 01 y 12
+  const month = Math.floor(Math.random() * 12) + 1;
+  return month.toString().padStart(2, '0'); // Asegura que sea un número de dos dígitos
+}
+
+function getRandomYear() {
+  // Genera un año aleatorio entre el actual y 5 años en el futuro
+  const currentYear = new Date().getFullYear();
+  const year = currentYear + Math.floor(Math.random() * 5);
+  return year.toString().slice(2); // Devuelve los últimos dos dígitos
+}
+
+function getRandomCCV() {
+  // Genera un CCV aleatorio de 3 dígitos
+  return Math.floor(100 + Math.random() * 900).toString();
+}
