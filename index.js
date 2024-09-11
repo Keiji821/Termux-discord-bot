@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: 131071 });
-let prefixInput = ''; // Declarar variable para el prefijo
+let prefixInput = '';
 const fs = require('fs');
 const readline = require('readline');
 const git = require('simple-git')();
@@ -48,7 +48,7 @@ italic: '[3m',
 
 // Mostrar mensaje de inicio
 const startupMessage = () => {
-console.log('[32m[1m [🟢] El bot ' + client.user.tag + ' se ha conectado correctamente! [0m');
+console.log('[32m[1m 「🟢」 El bot ' + client.user.tag + ' se ha conectado correctamente! [0m');
 };
 
 // Establecer el estado del bot
@@ -93,7 +93,7 @@ commandFile = folderPath;
 break;
 }
 } else {
-console.log('[36mBuscando comando ' + commandName + ' en carpeta ' + folder + '[36m');
+console.log('[36m Buscando comando ' + commandName + ' en carpeta ' + folder + '[36m');
 const folderPath = `./comandos/${folder}/${commandName}.js`;
 if (fs.existsSync(folderPath)) {
 commandFile = folderPath;
@@ -200,7 +200,8 @@ lolcatjs.fromString('▏[2] Actualizar              ︳');
 lolcatjs.fromString('▏[3] Instalar dependencias   ︳');
 lolcatjs.fromString('▏[4] Salir                   ︳');
 lolcatjs.fromString('⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
-rl.setPrompt(`[34m[1m 🍥➤ `);
+rl.setPrompt(`[32m[1m  ➤ `);
+lolcatjs.fromString();
 rl.prompt(); 
 };
 
