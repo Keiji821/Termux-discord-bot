@@ -193,18 +193,17 @@ lolcatjs.fromString(
 );
 
 lolcatjs.fromString('    Hecho por: Keiji821');
-
 lolcatjs.fromString();
-lolcatjs.fromString('
 
+lolcatjs.fromString('
 ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃
 ▏[1] Iniciar bot             ︳
 ▏[2] Actualizar              ︳
 ▏[3] Instalar dependencias   ︳
 ▏[4] Salir                   ︳
 ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
-lolcatjs.fromString();
 
+lolcatjs.fromString();
 rl.setPrompt(`[32m[1m  ➤ `);
 lolcatjs.fromString();
 rl.prompt(); 
