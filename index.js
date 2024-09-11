@@ -208,7 +208,7 @@ bottomRight: '',
 bottom: ''
 };
 
-const gradientBackground = (text) => gradient.fallen('blue', 'purple')(text);
+const gradientBackground = (text) => gradient('blue', 'purple')(text);
 
 console.log(`${borderChars.topLeft}${borderChars.top.repeat(78)}${borderChars.topRight}`);
 console.log(`${borderChars.left}    Hecho por: Keiji821${borderChars.right}`);
