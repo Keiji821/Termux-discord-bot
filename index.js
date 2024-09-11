@@ -86,7 +86,7 @@ const folders = [
 
 for (const folder of folders) {
 if (folder === 'cc chk') {
-console.log('[36m Buscando comando ' + commandName + ' en carpeta ' + folder + '/herramientas[36m');
+console.log('[36mBuscando comando ' + commandName + ' en carpeta ' + folder + '/herramientas[36m');
 const folderPath = `./comandos/${folder}/herramientas/${commandName}.js`;
 if (fs.existsSync(folderPath)) {
 commandFile = folderPath;
@@ -105,7 +105,7 @@ break;
 
 // Si no se encuentra en ninguna carpeta, búsqueda en la carpeta raíz
 if (!commandFile) {
-console.log('[36m Buscando comando ' + commandName + ' en la carpeta raíz[0m');
+console.log('[36mBuscando comando ' + commandName + ' en la carpeta raíz[0m');
 const rootPath = `./comandos/${commandName}.js`;
 if (fs.existsSync(rootPath)) {
 commandFile = rootPath;
@@ -113,19 +113,19 @@ commandFile = rootPath;
 }
 
 if (!commandFile) {
-console.log('[31m Comando no encontrado: ' + commandName + '[0m');
+console.log('[31mComando no encontrado: ' + commandName + '[0m');
 return;
 }
 
 const command = require(commandFile);
 if (!command.execute) {
-console.log('[33m El comando ' + commandName + ' no tiene una función execute[0m');
+console.log('[33mEl comando ' + commandName + ' no tiene una función execute[0m');
 return;
 }
 
 await command.execute(message, args, client, message.content.startsWith(prefix)? prefix : '');
 } catch (error) {
-console.error('[31m Error al ejecutar comando: ' + error + '[0m');
+console.error('[31mError al ejecutar comando: ' + error + '[0m');
 message.reply(`Error al ejecutar comando: ${error}`);
 }
 };
@@ -193,11 +193,13 @@ lolcatjs.fromString(
 );
 
 lolcatjs.fromString('    Hecho por: Keiji821');
-lolcatjs.fromString('');
-lolcatjs.fromString('[1] Iniciar bot');
-lolcatjs.fromString('[2] Actualizar');            
-lolcatjs.fromString('[3] Instalar dependencias');
-lolcatjs.fromString('[4] Salir');
+lolcatjs.fromString(' ');
+lolcatjs.fromString('⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
+lolcatjs.fromString('▏[1] Iniciar bot             ︳');
+lolcatjs.fromString('▏[2] Actualizar              ︳');
+lolcatjs.fromString('▏[3] Instalar dependencias   ︳');
+lolcatjs.fromString('▏[4] Salir                   ︳');
+lolcatjs.fromString('⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
 lolcatjs.fromString(' ');
 rl.setPrompt(`[32m[1m  ➤ `);
 lolcatjs.fromString(' ');
