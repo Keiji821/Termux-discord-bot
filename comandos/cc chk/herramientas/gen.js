@@ -26,10 +26,10 @@ module.exports = {
     axios.get(`https://binchk-api.vercel.app/bin=${bin}`)
       .then(response => {
         const json = response.data;
-        const bank = json.bank ? json.bank.name : 'Desconocido';
-        const country = json.country ? json.country.name : 'Desconocido';
-        const currency = json.country ? json.country.currency : 'Desconocido';
-        const emoji = json.country ? getCountryEmoji(json.country.emoji) : ''; // Obtener emoji del país
+        const bank = json.bank && json.bank.name ? json.bank.name : 'Desconocido';
+        const country = json.country && json.country.name ? json.country.name : 'Desconocido';
+        const currency = json.country && json.country.currency ? json.country.currency : 'Desconocido';
+        const emoji = json.country && json.country.emoji ? json.country.emoji : ''; // Obtener emoji del país
 
         generateCards(year, month, bin, bank, country, currency, emoji, ccv, message);
       })
@@ -74,11 +74,6 @@ function generateCards(year, month, bin, bank, country, currency, emoji, ccv, me
   } else {
     message.channel.send('No se pudieron generar las tarjetas de crédito.');
   }
-}
-
-// Función para obtener el emoji del país
-function getCountryEmoji(emoji) {
-  return emoji || ''; // Si no hay emoji, retorna una cadena vacía
 }
 
 function getRandomYear() {
