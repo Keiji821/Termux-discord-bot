@@ -214,9 +214,9 @@ console.log(`${borderChars.topLeft}${borderChars.top.repeat(78)}${borderChars.to
 console.log(`${borderChars.left}    Hecho por: Keiji821${borderChars.right}`);
 console.log(`${borderChars.left} ${gradientBackground(' ')}${borderChars.right}`);
 console.log(`${borderChars.left} [1] Iniciar bot             ${borderChars.right}`);
-console.log(`${borderCharts.left} [2] Actualizar              ${borderChars.right}`);
+console.log(`${borderChars.left} [2] Actualizar              ${borderChars.right}`);
 console.log(`${borderChars.left} [3] Instalar dependencias   ${borderChars.right}`);
-console.log(`${borderChars.left} [4] Salir                   ${borderCharts.right}`);
+console.log(`${borderChars.left} [4] Salir                   ${borderChars.right}`);
 console.log(`${borderChars.bottomLeft}${borderChars.bottom.repeat(78)}${borderChars.bottomRight}`);
 rl.setPrompt(`[32m[1m  ➤ `);
 lolcatjs.fromString(' ');
