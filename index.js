@@ -6,6 +6,7 @@ const readline = require('readline');
 const git = require('simple-git')();
 var figlet = require("figlet");
 const lolcatjs = require('lolcatjs');
+const gradient = require('gradient-string');
 
 lolcatjs.options.seed = Math.round(Math.random() * 1000);
 lolcatjs.options.colors = true;
@@ -180,28 +181,38 @@ console.error(`[31m[1m Error al instalar dependencias: ${error}[0m`);
 }
 };
 
-const showMenu = () => { 
-  console.clear();
+const showMenu = () => {
+console.clear();
 
 lolcatjs.fromString(
-  figlet.textSync("DisBot", {
-    font: "Slant",
-    horizontalLayout: "default",
-    verticalLayout: "default",
-    width: 80,
-    whitespaceBreak: true,
-  })
+figlet.textSync("DisBot", {
+font: "Slant",
+horizontalLayout: "default",
+verticalLayout: "default",
+width: 80,
+whitespaceBreak: true,
+})
 );
 
-lolcatjs.fromString('    Hecho por: Keiji821');
-lolcatjs.fromString(' ');
-lolcatjs.fromString('⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
-lolcatjs.fromString('▏[32m [1] Iniciar bot             ︳');
-lolcatjs.fromString('▏[2] Actualizar              ︳');
-lolcatjs.fromString('▏[3] Instalar dependencias   ︳');
-lolcatjs.fromString('▏[4] Salir                   ︳');
-lolcatjs.fromString('⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
-lolcatjs.fromString(' ');
+const borderChars = {
+topLeft: '',
+topRight: '',
+top: '',
+left: '',
+right: '',
+bottomLeft: '',
+bottomRight: '',
+bottom: ''
+};
+
+console.log(`${borderChars.topLeft}${borderChars.top.repeat(78)}${borderChars.topRight}`);
+console.log(`${borderChars.left}    Hecho por: Keiji821${borderCharts.right}`);
+console.log(`${borderCharts.left} ${gradientBackground(' ')}${borderCharts.right}`);
+console.log(`${borderCharts.left} [1] Iniciar bot             ${borderCharts.right}`);
+console.log(`${borderCharts.left} [2] Actualizar              ${borderCharts.right}`);
+console.log(`${borderCharts.left} [3] Instalar dependencias   ${borderCharts.right}`);
+console.log(`${borderCharts.left} [4] Salir                   ${borderCharts.right}`);
+console.log(`${borderCharts.bottomLeft}${borderCharts.bottom.repeat(78)}${borderCharts.bottomRight}`);
 rl.setPrompt(`[32m[1m  ➤ `);
 lolcatjs.fromString(' ');
 rl.prompt(); 
