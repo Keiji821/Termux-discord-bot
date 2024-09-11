@@ -185,7 +185,7 @@ const showMenu = () => {
 
 lolcatjs.fromString(
   figlet.textSync("DisBot", {
-    font: "Standard",
+    font: "Slant",
     horizontalLayout: "default",
     verticalLayout: "default",
     width: 80,
