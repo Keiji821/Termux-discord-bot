@@ -48,9 +48,8 @@ italic: '[3m',
 
 // Mostrar mensaje de inicio
 const startupMessage = () => {
-console.log('[32m[1m 
-
-「🟢」 El bot ' + client.user.tag + ' se ha conectado correctamente! [0m');
+console.log(' ');
+console.log('[32m[1m 「🟢」 El bot ' + client.user.tag + ' se ha conectado correctamente! [0m');
 };
 
 // Establecer el estado del bot
