@@ -183,47 +183,36 @@ console.error(`[31m[1m Error al instalar dependencias: ${error}[0m`);
 
 
 // Menú 
-const showMenu = () => {
-console.clear();
+const showMenu = () => { 
+  console.clear();
 
 lolcatjs.fromString(
-figlet.textSync("DisBot", {
-font: "Slant",
-horizontalLayout: "default",
-verticalLayout: "default",
-width: 80,
-whitespaceBreak: true,
-})
+  figlet.textSync("DisBot", {
+    font: "Slant",
+    horizontalLayout: "default",
+    verticalLayout: "default",
+    width: 80,
+    whitespaceBreak: true,
+  })
 );
 
-
-const borderChars = {
-  topLeft: '╭',
-  topRight: '╮',
-  top: '─',
-  left: '│',
-  right: '│',
-  bottomLeft: '╰',
-  bottomRight: '╯',
-  bottom: '─'
-};
-
-const gradientBackground = (text) => gradient('blue', 'purple')(text);
-
-console.log(`${borderChars.topLeft}${borderChars.top.repeat(78)}${borderChars.topRight}`);
-console.log(`${borderChars.left}    Hecho por: Keiji821${borderChars.right}`);
-console.log(`${borderChars.left} ${gradientBackground(' ')}${borderChars.right}`);
-console.log(`${borderChars.left} [1] Iniciar bot             ${borderChars.right}`);
-console.log(`${borderChars.left} [2] Actualizar              ${borderChars.right}`);
-console.log(`${borderChars.left} [3] Instalar dependencias   ${borderChars.right}`);
-console.log(`${borderChars.left} [4] Salir                   ${borderChars.right}`);
-console.log(`${borderChars.bottomLeft}${borderChars.bottom.repeat(78)}${borderChars.bottomRight}`);
-rl.setPrompt(`[32m[1m  ➤ `);
+lolcatjs.fromString('    Hecho por: Keiji821');
+lolcatjs.fromString(' ');
+lolcatjs.fromString('⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
+lolcatjs.fromString('▏[32m [1] Iniciar bot             ︳');
+lolcatjs.fromString('▏[2] Actualizar              ︳');
+lolcatjs.fromString('▏[3] Instalar dependencias   ︳');
+lolcatjs.fromString('▏[4] Salir                   ︳');
+lolcatjs.fromString('⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
+lolcatjs.fromString(' ');
+rl.setPrompt(`[32m[1m  ➤ `);
 lolcatjs.fromString(' ');
 rl.prompt(); 
 };
 
 showMenu();
+
+
 
 rl.on('line', (option) => {
 switch (option.trim()) {
