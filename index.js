@@ -199,7 +199,7 @@ lolcatjs.fromString(
 lolcatjs.fromString('    Hecho por: Keiji821');
 lolcatjs.fromString(' ');
 lolcatjs.fromString('⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
-lolcatjs.fromString('▏[32m [1] Iniciar bot             ︳');
+lolcatjs.fromString('▏[1] Iniciar bot             ︳');
 lolcatjs.fromString('▏[2] Actualizar              ︳');
 lolcatjs.fromString('▏[3] Instalar dependencias   ︳');
 lolcatjs.fromString('▏[4] Salir                   ︳');
