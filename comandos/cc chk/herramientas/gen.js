@@ -56,8 +56,8 @@ Format: "PIPE"
 const cards = res.split("|"); // Divide la cadena en un array de tarjetas
 
 if (cards.length > 0) {
-const cardEmbed = new Discord.EmbedBuilder() 
-.setTitle("Tarjetas de Crédito Generadas");
+const cardEmbed = new Discord.EmbedBuilder()
+.setTitle('Tarjetas de Crédito Generadas'); // Cambiar comillas dobles por comillas simples
 
 let fields = [];
 
@@ -72,9 +72,8 @@ const ccvGenerated = getRandomCCV(); // Generar CCV aleatoriamente
 
 const cardDescription = cards.map(card => {
 return `${card} | CCV: ${ccvGenerated}`;
-}).join("
-");
-
+}).join('
+'); // Cambiar comillas dobles por comillas simples y \
 cardEmbed.addFields(fields);
 cardEmbed.setDescription(cardDescription);
 cardEmbed.setColor("#0099ff");
