@@ -1,17 +1,17 @@
-const { EmbedBuilder } = require('discord.js'); 
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js'); 
 const axios = require('axios');  
 const namso = require('namso-cc-gen'); 
 
 module.exports = {
   name: 'gen',
   description: 'Genera tarjetas de crédito aleatorias',
-  async execute(message, args) {
+  async execute(interaction, args) {
     const input = args.join(' ');
     const parts = input.split('|');
 
     // Verifica que el formato de entrada sea correcto
     if (parts.length !== 4) {
-      return message.channel.send('Error: Formato de entrada incorrecto. Uso: ,gen <bin>|<mes>|<año>|<ccv>');
+      return interaction.reply('Error: Formato de entrada incorrecto. Uso: ,gen <bin>|<mes>|<año>|<ccv>');
     }
 
     let bin = parts[0];
@@ -26,7 +26,7 @@ module.exports = {
 
     // Verificación de BIN usando la API
     try {
-      const response = await axios.get(`https://binchk-api.vercel.app/bin=${bin}`);  // Cambié la barra por `=`
+      const response = await axios.get(`https://binchk-api.vercel.app/bin=${bin}`); 
       const json = response.data;
 
       if (!json.status) {
@@ -41,16 +41,46 @@ module.exports = {
       const phone = json.phone || 'Desconocido';
 
       // Generar las tarjetas de crédito
-      generateCards(year, month, bin, bank, brand, type, level, phone, message);
+      const cards = generateCards(year, month, bin);
+
+      // Crear embed con el botón de regenerar
+      const cardEmbed = new EmbedBuilder()
+        .setTitle('Generador de Tarjetas')
+        .setColor('#0099ff')
+        .addFields(
+          { name: 'Formato', value: `${bin}|${month}|${year}`, inline: false },
+          { name: 'Datos del BIN', value: `💳 ${brand} - ${type} - ${level}`, inline: false },
+          { name: 'Datos del Banco', value: `🏦 ${bank} - Tel: ${phone}`, inline: false }
+        )
+        .addFields({ name: 'Tarjetas Generadas', value: cards.join('\n'), inline: false });
+
+      // Crear botón de regenerar
+      const row = new ActionRowBuilder().addComponents(
+        new ButtonBuilder()
+          .setCustomId('regenerate')
+          .setLabel('Regenerar Tarjetas')
+          .setStyle(ButtonStyle.Primary)
+      );
+
+      // Enviar embed con botón
+      await interaction.reply({ embeds: [cardEmbed], components: [row] });
     } catch (error) {
       console.error('Error al obtener datos de la API:', error.message);
-      return message.channel.send('Error al generar tarjetas de crédito. Intente nuevamente más tarde.');
+      return interaction.reply('Error al generar tarjetas de crédito. Intente nuevamente más tarde.');
+    }
+  },
+
+  // Manejar la interacción del botón de regenerar
+  async interactionHandler(interaction) {
+    if (interaction.customId === 'regenerate') {
+      const args = interaction.message.embeds[0].fields[0].value.split('|');
+      this.execute(interaction, args);
     }
   }
 };
 
 // Función para generar las tarjetas
-function generateCards(year, month, bin, bank, brand, type, level, phone, message) {
+function generateCards(year, month, bin) {
   const res = namso.gen({
     ShowCCV: true,
     ShowExpDate: true,
@@ -62,43 +92,23 @@ function generateCards(year, month, bin, bank, brand, type, level, phone, messag
     Format: "PIPE"
   });
 
-  const cards = res.split("|");
-
-  if (cards.length > 0) {
-    const cardEmbed = new EmbedBuilder()
-      .setTitle('Generador de Tarjetas')
-      .setColor('#0099ff')
-      .addFields(
-        { name: 'Formato', value: `${bin}|${month}|${year}`, inline: false },
-        { name: 'Datos del BIN', value: `💳 ${brand} - ${type} - ${level}`, inline: false },
-        { name: 'Datos del Banco', value: `🏦 ${bank} - Tel: ${phone}`, inline: false }
-      );
-
-    const cardDescription = cards.map(card => {
-      const randomCCV = getRandomCCV();  // Generar un nuevo CCV para cada tarjeta
-      return `${card}|${month}|${year}|${randomCCV}`;
-    }).join('\n');
-
-    cardEmbed.addFields({ name: 'Tarjetas Generadas', value: cardDescription, inline: false });
-
-    message.channel.send({ embeds: [cardEmbed] });
-  } else {
-    message.channel.send('No se pudieron generar las tarjetas de crédito.');
-  }
+  // Asegurarse de que las tarjetas se generen correctamente
+  const cards = res.split("|").filter(card => card && card.length >= 16);
+  return cards.map(card => `${card}|${month}|${year}|${getRandomCCV()}`);
 }
 
 // Funciones auxiliares para generar valores aleatorios
 function getRandomMonth() {
   const month = Math.floor(Math.random() * 12) + 1;
-  return month.toString().padStart(2, '0'); // Asegura que sea de dos dígitos
+  return month.toString().padStart(2, '0'); 
 }
 
 function getRandomYear() {
   const currentYear = new Date().getFullYear();
   const year = currentYear + Math.floor(Math.random() * 5);
-  return year.toString().slice(2); // Devuelve los últimos dos dígitos
+  return year.toString().slice(2); 
 }
 
 function getRandomCCV() {
-  return Math.floor(100 + Math.random() * 900).toString(); // CCV aleatorio de 3 dígitos
+  return Math.floor(100 + Math.random() * 900).toString(); 
 }
