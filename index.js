@@ -181,8 +181,7 @@ console.error(`[31m[1m Error al instalar dependencias: ${error}[0m`);
 };
 
 const showMenu = () => { 
-try {
-  await exec('clear');
+  console.clear();
 
 lolcatjs.fromString(
   figlet.textSync("DisBot", {
@@ -202,6 +201,7 @@ lolcatjs.fromString('▏[2] Actualizar              ︳');
 lolcatjs.fromString('▏[3] Instalar dependencias   ︳');
 lolcatjs.fromString('▏[4] Salir                   ︳');
 lolcatjs.fromString('⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
+await exec('clear');
 lolcatjs.fromString(' ');
 rl.setPrompt(`[32m[1m  ➤ `);
 lolcatjs.fromString(' ');
