@@ -181,6 +181,8 @@ console.error(`[31m[1m Error al instalar dependencias: ${error}[0m`);
 }
 };
 
+
+// Menú 
 const showMenu = () => {
 console.clear();
 
@@ -194,6 +196,7 @@ whitespaceBreak: true,
 })
 );
 
+
 const borderChars = {
 topLeft: '',
 topRight: '',
@@ -204,6 +207,8 @@ bottomLeft: '',
 bottomRight: '',
 bottom: ''
 };
+
+const gradientBackground = (text) => gradient.fallen('blue', 'purple')(text);
 
 console.log(`${borderChars.topLeft}${borderChars.top.repeat(78)}${borderChars.topRight}`);
 console.log(`${borderChars.left}    Hecho por: Keiji821${borderChars.right}`);
