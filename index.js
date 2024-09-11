@@ -49,7 +49,9 @@ italic: '[3m',
 // Mostrar mensaje de inicio
 const startupMessage = () => {
 console.log(' ');
+console.log(' ');
 console.log('[32m[1m 「🟢」 El bot ' + client.user.tag + ' se ha conectado correctamente! [0m');
+console.log(' ');
 };
 
 // Establecer el estado del bot
@@ -181,7 +183,7 @@ console.error(`[31m[1m Error al instalar dependencias: ${error}[0m`);
 };
 
 const showMenu = () => {
-  console.clear();
+  await exec('clear');
 
 lolcatjs.fromString(
   figlet.textSync("DisBot", {
