@@ -58,8 +58,8 @@ function generateCards(year, month, bin, bank, country, ccv, message) {
       .setColor('#0099ff')
       .addFields(
         { name: 'Formato', value: `${bin}|${month}|${year}|${ccv}`, inline: false },
-        { name: 'Bin Data', value: `MASTERCARD - CREDIT - STANDARD`, inline: false },
-        { name: 'Bank Data', value: `${bank} - ${country}`, inline: false }
+        { name: '🔢 Bin Data', value: `💳 MASTERCARD - CREDIT - STANDARD`, inline: false }, // Emoji añadido
+        { name: '🏦 Bank Data', value: `${bank} - ${country}`, inline: false } // Emoji añadido
       );
 
     const cardDescription = cards.map(card => {
