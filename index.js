@@ -180,7 +180,8 @@ console.error(`[31m[1m Error al instalar dependencias: ${error}[0m`);
 }
 };
 
-const showMenu = () => {
+const showMenu = () => { 
+try {
   await exec('clear');
 
 lolcatjs.fromString(
