@@ -201,7 +201,6 @@ lolcatjs.fromString('▏[2] Actualizar              ︳');
 lolcatjs.fromString('▏[3] Instalar dependencias   ︳');
 lolcatjs.fromString('▏[4] Salir                   ︳');
 lolcatjs.fromString('⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
-await exec('clear');
 lolcatjs.fromString(' ');
 rl.setPrompt(`[32m[1m  ➤ `);
 lolcatjs.fromString(' ');
