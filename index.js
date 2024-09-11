@@ -205,7 +205,7 @@ lolcatjs.fromString('▏[3] Instalar dependencias   ︳');
 lolcatjs.fromString('▏[4] Salir                   ︳');
 lolcatjs.fromString('⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
 lolcatjs.fromString(' ');
-rl.setPrompt(`[32m[1m  ➤ `);
+rl.setPrompt(`[32m[1m  ➤ `);
 lolcatjs.fromString(' ');
 rl.prompt(); 
 };
