@@ -40,7 +40,7 @@ module.exports = {
   }
 };
 
-function generateCards(year, month, bin, bank, country, currency, emoji, ccv, message) {
+function generateCards(year, month, bin, bank, country, currency, emoji, message) {
   const res = namso.gen({
     ShowCCV: true,
     ShowExpDate: true,
@@ -59,13 +59,14 @@ function generateCards(year, month, bin, bank, country, currency, emoji, ccv, me
       .setTitle('Card Generator')
       .setColor('#0099ff')
       .addFields(
-        { name: 'Format', value: `${bin}|${month}|${year}|${ccv}`, inline: false },
+        { name: 'Format', value: `${bin}|${month}|${year}`, inline: false }, // Eliminamos el CCV fijo
         { name: 'Bin Data', value: `💳 MASTERCARD - CREDIT - STANDARD`, inline: false }, // Datos de la tarjeta
         { name: 'Bank Data', value: `🏦 ${bank} - ${emoji} ${country} - ${currency}`, inline: false } // Datos del banco con emoji y moneda
       );
 
     const cardDescription = cards.map(card => {
-      return `${card}|${month}|${year}|${ccv}`;
+      const randomCCV = getRandomCCV();  // Generar un nuevo CCV para cada tarjeta
+      return `${card}|${month}|${year}|${randomCCV}`;
     }).join('\n');
 
     cardEmbed.addFields({ name: 'Generated Cards', value: cardDescription, inline: false });
@@ -74,18 +75,4 @@ function generateCards(year, month, bin, bank, country, currency, emoji, ccv, me
   } else {
     message.channel.send('No se pudieron generar las tarjetas de crédito.');
   }
-}
-
-function getRandomYear() {
-  const currentYear = new Date().getFullYear();
-  return (currentYear + Math.floor(Math.random() * 10)).toString();
-}
-
-function getRandomMonth() {
-  const month = Math.floor(Math.random() * 12) + 1;
-  return month < 10 ? `0${month}` : month.toString();
-}
-
-function getRandomCCV() {
-  return Math.floor(Math.random() * 900) + 100;
 }
