@@ -48,7 +48,9 @@ italic: '[3m',
 
 // Mostrar mensaje de inicio
 const startupMessage = () => {
-console.log('[32m[1m 「🟢」 El bot ' + client.user.tag + ' se ha conectado correctamente! [0m');
+console.log('[32m[1m 
+
+「🟢」 El bot ' + client.user.tag + ' se ha conectado correctamente! [0m');
 };
 
 // Establecer el estado del bot
@@ -133,7 +135,7 @@ message.reply(`Error al ejecutar comando: ${error}`);
 client.on('ready', async () => {
 startupMessage();
 setStatus('online');
-setActivity('Bot oficial');
+setActivity('En desarrollo');
 });
 
 client.on('messageCreate', async (message) => {
